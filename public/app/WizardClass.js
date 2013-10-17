@@ -3,6 +3,8 @@ define(["js/core/Application", "app/model/FirewallConfiguration"],
 
         return Application.inherit({
             defaults: {
+
+                i18n: null,
                 configuration: FirewallConfiguration
             },
              /***
