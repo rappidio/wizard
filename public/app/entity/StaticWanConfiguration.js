@@ -5,7 +5,8 @@ define(['app/entity/WanConfiguration'], function(WanConfiguration){
 
         defaults: {
             type: "static",
-            useDhcpDnsServer: false
+            useDhcpDnsServer: false,
+            useDnsServer: true
         },
 
         schema: {
