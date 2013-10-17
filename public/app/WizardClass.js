@@ -17,7 +17,11 @@ define(
                 this.callBase(parameter, false);
 
                 callback();
-            }
+            },
+
+            isWanConfigurationActive: function(type) {
+              return this.get('configuration.wan.type') === type;
+            }.onChange("configuration.wan")
         });
     }
 );
