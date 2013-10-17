@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<view:WanClass xmlns="http://www.w3.org/1999/xhtml"
+                 xmlns:js="js.core" xmlns:ui="js.ui" xmlns:view="app.view" xmlns:field="js.ui.field">
+
+    <js:I18n cid="i18n" locale="de" path="app/locale" loadMomentJs="false"/>
+
+    <div class="step1">
+        <fieldset>
+            <legend>{i18n.t('step1.title')}</legend>
+        </fieldset>
+
+        <ui:Field label="Mode">
+            <select items="{modes}"
+                    selectedItem="{{wan}}"
+                    itemKey="mode">
+                <js:Template name="item">
+                    <option>{i18n.ts('wanModes',mode.type)}</option>
+                </js:Template>
+
+            </select>
+        </ui:Field>
+
+        <div class="static" visible="{isWanConfigurationActive('static')}">
+            <field:Text value="{{wan.ipAddress}}" label="IP" />
+            <field:Text value="{{wan.netmask}}" label="Netmask" />
+            <field:Text value="{{wan.gateway}}" label="Gateway" />
+        </div>
+
+        <div class="pppoe" visible="{isWanConfigurationActive('pppoe')}">
+            <field:Text value="{{wan.username}}" label="PPPoE Username" />
+            <field:Password value="{{wan.password}}" label="PPPoE Password" />
+        </div>
+
+        <ui:Field label="Mac Address">
+            <ui:RadioGroup cid="overwriteMacAddress" value="false">
+                <ui:Radio label="Use Default" value="false"/>
+                <ui:Radio label="Overwrite" value="true"/>
+            </ui:RadioGroup>
+            <input value="{{wan.macAddress}}"
+                   enabled="{overwriteMacAddress.value}"/>
+
+        </ui:Field>
+
+        <ui:Field label="Dns Server" visible="{wan.supportsDnsServerByDhcp()}">
+            <ui:Checkbox checked="{{wan.useDnsServer}}"/>
+
+        </ui:Field>
+
+        <div visible="{wan.useDnsServer}">
+            <field:Text value="{{wan.DnsServer1}}" label="Dns Server 1" />
+            <field:Text value="{{wan.DnsServer2}}" label="Dns Server 2" />
+            <field:Text value="{{wan.DnsServer3}}" label="Dns Server 3" />
+        </div>
+
+
+    </div>
+</view:WanClass>

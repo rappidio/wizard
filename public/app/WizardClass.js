@@ -5,7 +5,8 @@ define(["js/core/Application", "app/model/FirewallConfiguration"],
             defaults: {
 
                 i18n: null,
-                configuration: FirewallConfiguration
+                configuration: FirewallConfiguration,
+                currentStep: 0
 
             },
              /***
@@ -20,10 +21,12 @@ define(["js/core/Application", "app/model/FirewallConfiguration"],
                 callback();
             },
 
-            isWanConfigurationActive: function(type) {
-                return this.get("configuration.wan.type") === type;
-
-            }.onChange("configuration.wan")
+            next: function() {
+                this.set("currentStep", this.$.currentStep + 1)
+            },
+            previous: function() {
+                this.set("currentStep", this.$.currentStep - 1)
+            }
         });
     }
 );
