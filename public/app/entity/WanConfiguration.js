@@ -5,19 +5,22 @@ define(['js/data/Entity'], function (Entity) {
     schema: {
       enableNat: Boolean,
       type: String,
+      overrideMacAddress: Boolean,
       macAddress: {required: false, type: String},
       'interface': String,
-      useDhcpDns: Boolean,
+      enableDnsByDhcp: Boolean,
       dnsServer1: String,
       dnsServer2: String,
       dnsServer3: String
     },
-
     defaults: {
       enableNat: true,
       type: null,
-      'interface': 'eth0'
+      overrideMacAddress: false,
+      'interface': 'eth0',
+      enableDnsByDhcp: true
     }
+
   });
 
 });
