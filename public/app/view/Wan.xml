@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<view:WanClass xmlns="http://www.w3.org/1999/xhtml"
+               xmlns:js="js.core" xmlns:ui="js.ui" xmlns:app="app" xmlns:field="js.ui.field" xmlns:view="app.view">
+
+    <fieldset>
+        <legend>WAN Settings</legend>
+        {wan.type}
+    </fieldset>
+
+    <ui:Field label="mode">
+        <select items="{modes}" selectedItem="{{wan}}" itemKey="mode">
+            <js:Template name="item">
+                <option value="{mode.type}">
+                    {i18n.ts('wanModes', mode.type)}
+                </option>
+            </js:Template>
+        </select>
+
+    </ui:Field>
+    <div class="static" visible="{isWanConfigurationActive('static')}">
+        <field:Text value="{{wan.ip}}" label="IP"/>
+        <field:Text value="{{wan.netmask}}" label="Netmask"/>
+        <field:Text value="{{wan.gateway}}" label="Gateway"/>
+    </div>
+    <div class="pppoe" visible="{isWanConfigurationActive('pppoe')}">
+        <field:Text value="{{wan.username}}" label="Username"/>
+        <field:Password value="{{wan.password}}" label="Password"/>
+    </div>
+    <ui:Field label="Mac Address">
+        <ui:RadioGroup value="{{wan.overrideMacAddress}}">
+            <ui:Radio label="Use Default" value="false"/>
+            <ui:Radio label="Override" value="true"/>
+        </ui:RadioGroup>
+        <input type="text" enabled="{wan.overrideMacAddress}" value="{{wan.macAddress}}"/>
+    </ui:Field>
+
+    <fieldset>
+        <legend>DNS Settings</legend>
+        <ui:Field label="Use DNS configured by DHCP">
+            <ui:Checkbox checked="{{wan.enableDnsByDhcp}}"/>
+        </ui:Field>
+
+        <field:Text enabled="{not(wan.enableDnsByDhcp)}" value="{{wan.dnsServer1}}"
+                    label="DNS Server 1"/>
+        <field:Text enabled="{not(wan.enableDnsByDhcp)}" value="{{wan.dnsServer2}}"
+                    label="DNS Server 2"/>
+        <field:Text enabled="{not(wan.enableDnsByDhcp)}" value="{{wan.dnsServer3}}"
+                    label="DNS Server 3"/>
+    </fieldset>
+
+</view:WanClass>

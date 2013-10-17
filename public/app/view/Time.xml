@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<view:TimeClass xmlns="http://www.w3.org/1999/xhtml"
+               xmlns:js="js.core" xmlns:ui="js.ui" xmlns:app="app" xmlns:field="js.ui.field" xmlns:view="app.view">
+
+    <fieldset>
+        <legend>Time</legend>
+
+        <field:Text enabled="{not(time.useNtp)}" value="{{time.date}}" label="Date"/>
+        <field:Text enabled="{not(time.useNtp)}" value="{{time.time}}" label="Time"/>
+
+        <ui:Field label="Time zone">
+            <select items="{timeZones}" selectedItem="{{time.timeZone}}" itemKey="timeZone">
+                <js:Template name="item">
+                    <option value="{timeZone.key}">
+                        {timeZone.name}
+                    </option>
+                </js:Template>
+            </select>
+
+        </ui:Field>
+    </fieldset>
+
+</view:TimeClass>

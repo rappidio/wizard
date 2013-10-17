@@ -7,8 +7,13 @@ define(
        *  initializes the application variables
        */
       defaults: {
+        i18n: null,
+        wizardSteps: null,
+        currentStep: 0,
         configuration: FirewallConfiguration
       },
+
+
       /***
        * Starts the application
        * @param parameter
@@ -21,9 +26,22 @@ define(
         callback();
       },
 
-      isWanConfigurationActive: function(mode) {
-        return this.get('configuration.wan.type') === mode;
-      }.onChange('configuration.wan')
+      next: function() {
+        this.set('currentStep', this.get('currentStep') + 1);
+      },
+
+      back: function(){
+        this.set('currentStep', this.get('currentStep') - 1);
+      },
+
+      hasPrevious: function() {
+        return this.$.currentStep > 0;
+      }.onChange('currentStep'),
+
+      hasNext: function() {
+        return this.$.currentStep < this.$.wizardSteps.$children.length - 1;
+      }.onChange('currentStep')
+
     });
   }
 );
