@@ -1,26 +1,25 @@
-define(['js/data/Model', 'app/entity/WanConfiguration', 'app/entity/LanConfiguration', 'app/entity/DhcpWanConfiguration', 'app/entity/StaticWanConfiguration', 'app/entity/PppoeWanConfiguration'],
-  function (Model, WanConfiguration, LanConfiguration, DhcpWanConfiguration, StaticWanConfiguration, PppoeWanConfiguration) {
+define(['js/data/Model', 'app/entity/WanConfiguration', 'app/entity/DhcpWanConfiguration', 'app/entity/StaticWanConfiguration', 'app/entity/PppoeWanConfiguration'],
+    function(Model, WanConfiguration, DhcpWanConfiguration, StaticWanConfiguration, PppoeWanConfiguration){
 
     return Model.inherit('app.model.FirewallConfiguration', {
 
         schema: {
             wan: WanConfiguration,
-            lan: LanConfiguration
+            hostname: String
         },
 
         defaults: {
-            wan: null,
-            modes: null,
-            lan: LanConfiguration
+            wan:  null,
+            modes: null
         },
 
-        ctor: function () {
+        ctor: function(){
             this.callBase();
+
             this.set('modes', [
-              new DhcpWanConfiguration(),
-              new StaticWanConfiguration(),
-              new PppoeWanConfiguration()
-            ])
+                new DhcpWanConfiguration(),
+                new StaticWanConfiguration(),
+                new PppoeWanConfiguration()]);
         }
     });
 });
