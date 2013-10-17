@@ -8,7 +8,7 @@
         <div class="row">
             <form class="span12 form-horizontal">
                 <fieldset>
-                    <legend>WAN Settings</legend>
+                    <legend>{i18n.t('step1.title')}</legend>
                     {configuration.wan.type}
                 </fieldset>
                 <ui:Field label="Mode">
@@ -16,7 +16,7 @@
                             selectedItem="{{configuration.wan}}"
                             itemKey="mode">
                         <js:Template name="item">
-                            <option>{mode.type}</option>
+                            <option>{i18n.ts('wanModes',mode.type)}</option>
                         </js:Template>
 
                     </select>
