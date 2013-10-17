@@ -1,13 +1,11 @@
 define(
-    ["js/core/Application"],
-    function (Application) {
+    ["js/core/Application", "app/model/FirewallConfiguration"],
+    function (Application, FirewallConfiguration) {
 
         return Application.inherit({
-            /**
-             *  initializes the application variables
-             */
-            initialize:function () {
-                this.set('appName','Wizard');
+            defaults: {
+                configuration: FirewallConfiguration
+
             },
             /***
              * Starts the application
@@ -19,7 +17,11 @@ define(
                 this.callBase(parameter, false);
 
                 callback();
-            }
+            },
+
+            isWanConfigurationActive: function(type) {
+              return this.get('configuration.wan.type') === type;
+            }.onChange("configuration.wan")
         });
     }
 );
