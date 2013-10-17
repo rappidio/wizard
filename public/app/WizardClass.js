@@ -1,27 +1,29 @@
 define(
-    ["js/core/Application", "app/model/FirewallConfiguration"],
-    function (Application, FirewallConfiguration) {
+  ["js/core/Application", "app/model/FirewallConfiguration"],
+  function (Application, FirewallConfiguration) {
 
-        return Application.inherit({
-            defaults: {
-                configuration: FirewallConfiguration
+    return Application.inherit({
+      /**
+       *  initializes the application variables
+       */
+      defaults: {
+        configuration: FirewallConfiguration
+      },
+      /***
+       * Starts the application
+       * @param parameter
+       * @param callback
+       */
+      start: function (parameter, callback) {
+        // false - disables autostart
+        this.callBase(parameter, false);
 
-            },
-            /***
-             * Starts the application
-             * @param parameter
-             * @param callback
-             */
-            start:function (parameter, callback) {
-                // false - disables autostart
-                this.callBase(parameter, false);
+        callback();
+      },
 
-                callback();
-            },
-
-            isWanConfigurationActive: function(type) {
-              return this.get('configuration.wan.type') === type;
-            }.onChange("configuration.wan")
-        });
-    }
+      isWanConfigurationActive: function(mode) {
+        return this.get('configuration.wan.type') === mode;
+      }.onChange('configuration.wan')
+    });
+  }
 );

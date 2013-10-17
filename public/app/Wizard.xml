@@ -1,32 +1,40 @@
 <?xml version="1.0"?>
 <app:WizardClass xmlns="http://www.w3.org/1999/xhtml"
                  xmlns:js="js.core" xmlns:ui="js.ui" xmlns:app="app" xmlns:field="js.ui.field">
+
+    <js:I18n cid="i18n" locale="de" path="app/locale" loadMomentJs="false" />
+
     <div class="container">
+
         <div class="row">
-            <form class="span12 form-horizontal">
+            <form class="form-horizontal">
                 <fieldset>
                     <legend>WAN Settings</legend>
+                    {configuration.wan.type}
                 </fieldset>
 
-                <ui:Field label="Model">
-                    <select items="{configuration.modes}"
-                            selectedItem="{{configuration.wan}}"
-                            itemKey="mode">
-                        <js:Template name="item">
-                            <option>{mode.type}</option>
-                        </js:Template>
-                    </select>
+                <ui:Field label="mode">
+                   <select items="{configuration.modes}" selectedItem="{{configuration.wan}}" itemKey="mode">
+                       <js:Template name="item">
+                           <option value="{mode.type}">
+                               {i18n.ts(mode.type)}
+                           </option>
+                       </js:Template>
+                   </select>
+
                 </ui:Field>
                 <div class="static" visible="{isWanConfigurationActive('static')}">
-                    <field:Text value="{{configuration.wan.ipAddress}}" label="IP" />
+                    <field:Text value="{{configuration.wan.ip}}" label="IP" />
                     <field:Text value="{{configuration.wan.netmask}}" label="Netmask" />
                     <field:Text value="{{configuration.wan.gateway}}" label="Gateway" />
                 </div>
-                <div class="pppoe"  visible="{isWanConfigurationActive('pppoe')}">
-                    <field:Text value="{{configuration.wan.username}}" label="PPPoE Username" />
-                    <field:Password value="{{configuration.wan.password}}" label="PPPoE Password" />
+                <div class="pppoe" visible="{isWanConfigurationActive('pppoe')}">
+                    <field:Text value="{{configuration.wan.username}}" label="Username" />
+                    <field:Password value="{{configuration.wan.password}}" label="Password" />
                 </div>
             </form>
         </div>
+
     </div>
+
 </app:WizardClass>
