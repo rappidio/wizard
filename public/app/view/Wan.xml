@@ -2,8 +2,6 @@
 <view:WanClass xmlns="http://www.w3.org/1999/xhtml"
                  xmlns:js="js.core" xmlns:ui="js.ui" xmlns:view="app.view" xmlns:field="js.ui.field">
 
-    <js:I18n cid="i18n" locale="de" path="app/locale" loadMomentJs="false"/>
-
     <div class="step1">
         <fieldset>
             <legend>{i18n.t('step1.title')}</legend>
