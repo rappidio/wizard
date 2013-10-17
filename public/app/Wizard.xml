@@ -1,10 +1,56 @@
 <?xml version="1.0"?>
 <app:WizardClass xmlns="http://www.w3.org/1999/xhtml"
-               xmlns:js="js.core" xmlns:ui="js.ui" xmlns:app="app">
+                 xmlns:js="js.core" xmlns:ui="js.ui" xmlns:app="app" xmlns:field="js.ui.field">
     <div class="container">
-        <h1>Congratulations</h1>
-        <p>
-            Your Application "{appName}" is running!
-        </p>
+        <div class="row">
+            <div class="span12">
+                <form class="form-horizontal">
+                    <ui:SegmentedView visibleIndex="{currentStep}">
+                        <div class="step1" animationClass="move">
+                            <fieldset>
+                                <legend>LAN</legend>
+                                <div>
+                                    <ui:Field label="">
+                                        <ui:Checkbox label="Enable NAT" checked="{{config.enableNat}}"/>
+                                    </ui:Field>
+                                    <ui:Field label="Mode">
+                                        <select items="{config.modes()}" itemKey="mode" selectedItem="{{config.wan}}">
+                                            <js:Template name="item">
+                                                <option>{mode.type}</option>
+                                            </js:Template>
+                                        </select>
+                                    </ui:Field>
+                                </div>
+
+                                <div visible="{isWanConfigType('static')}">
+                                    <field:Text label="IP" value="{{config.wan.ip}}"/>
+                                    <field:Text label="Netmask" value="{{config.wan.netmask}}"/>
+                                    <field:Text label="Gateway" value="{{config.wan.gateway}}"/>
+                                </div>
+                                <div>
+                                </div>
+                            </fieldset>
+                            <fieldset>
+                                <legend>DNS Settings</legend>
+                                <div visible="{config.wan.configDnsServers}">
+                                    <field:Text label="DNS Server 1" value="{{config.wan.dnsServer1}}"/>
+                                    <field:Text label="DNS Server 2" value="{{config.wan.dnsServer2}}"/>
+                                    <field:Text label="DNS Server 3" value="{{config.wan.dnsServer3}}"/>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="step2">
+                            <div>asdasd</div>
+                        </div>
+                    </ui:SegmentedView>
+                    <ui:Field>
+                        <ui:Button label="Next" type="success" onclick="gotoNextStep"/>
+                    </ui:Field>
+
+                </form>
+            </div>
+
+        </div>
+
     </div>
 </app:WizardClass>
