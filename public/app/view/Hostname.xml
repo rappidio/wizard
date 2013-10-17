@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<view:HostnameClass xmlns="http://www.w3.org/1999/xhtml"
+                 xmlns:js="js.core" xmlns:ui="js.ui" xmlns:view="app.view" xmlns:field="js.ui.field">
+
+    <div>
+        <fieldset>
+            <legend>{i18n.t('step2.title')}</legend>
+        </fieldset>
+
+        <field:Text value="{{hostname}}" label="Hostname" />
+    </div>
+</view:HostnameClass>

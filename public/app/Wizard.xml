@@ -5,17 +5,14 @@
         <js:I18n cid="i18n" locale="de" path="app/locale" loadMomentJs="false"/>
     </js:Injection>
 
-    <js:I18n cid="i18n" locale="de" path="app/locale" loadMomentJs="false"/>
-
-    <div class="container">
+     <div class="container">
 
         <div class="row">
             <form class="span12 form-horizontal">
                <ui:SegmentedView visibleIndex="{currentStep}">
-                    <view:Wan wan="{configuration.wan}" modes="{configuration.modes}"/>
-                    <div class="step2">
-                        Test
-                    </div>
+                    <view:Welcome class="step1"/>
+                    <view:Hostname hostname="{{configuration.hostname}}" class="step2"/>
+                    <view:Wan wan="{configuration.wan}" modes="{configuration.modes}" class="step3"/>
                 </ui:SegmentedView>
                 <div>
                     <ui:Button label="Previous" onclick="previous"/>

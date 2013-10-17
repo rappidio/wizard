@@ -4,7 +4,8 @@ define(['js/data/Model', 'app/entity/WanConfiguration', 'app/entity/DhcpWanConfi
     return Model.inherit('app.model.FirewallConfiguration', {
 
         schema: {
-            wan: WanConfiguration
+            wan: WanConfiguration,
+            hostname: String
         },
 
         defaults: {

@@ -12,6 +12,15 @@
     },
 
     "step1": {
+        "title": "Wilkommen",
+        "text": "Hallo Foo Bar"
+    },
+
+    "step2": {
+        "title": "Hostname Einstellungen"
+    },
+
+    "step3": {
         "title": "WAN Einstellungen"
     },
 

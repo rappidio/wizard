@@ -2,9 +2,9 @@
 <view:WanClass xmlns="http://www.w3.org/1999/xhtml"
                  xmlns:js="js.core" xmlns:ui="js.ui" xmlns:view="app.view" xmlns:field="js.ui.field">
 
-    <div class="step1">
+    <div>
         <fieldset>
-            <legend>{i18n.t('step1.title')}</legend>
+            <legend>{i18n.t('step3.title')}</legend>
         </fieldset>
 
         <ui:Field label="Mode">
