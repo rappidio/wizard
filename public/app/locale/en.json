@@ -11,8 +11,12 @@
         "pppoe": "PPPoE"
     },
 
-    "step1": {
-        "title": "WAN Settings"
+    "steps": {
+        "welcome": "Welcome",
+        "wan": "WAN Setting",
+        "lan": "LAN Setting",
+        "hostname": "Hostname",
+        "summary": "Summary"
     },
 
     "network": {
