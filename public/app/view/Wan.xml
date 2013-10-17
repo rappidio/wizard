@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<view:WanClass xmlns="http://www.w3.org/1999/xhtml"
+               xmlns:js="js.core" xmlns:ui="js.ui" xmlns:field="js.ui.field"
+               xmlns:view="app.view">
+
+    <ui:Field label="mode">
+        <select items="{modes}"
+                selectedItem="{{wan}}"
+                itemKey="mode">
+            <js:Template name="item">
+                <option>{i18n.ts('wanModes',mode.type)}</option>
+            </js:Template>
+        </select>
+    </ui:Field>
+    <div class="static" visible="{isWanConfigurationActive('static')}">
+        <field:Text value="{{wan.ipAddress}}"
+                    label="{i18n.t('network.ipAddress')}"/>
+        <field:Text value="{{wan.netmask}}" label="{i18n.t('network.netmask')}"/>
+        <field:Text value="{{wan.gateway}}" label="{i18n.t('network.gateway')}"/>
+    </div>
+    <div class="pppoe" visible="{isWanConfigurationActive('pppoe')}">
+        <field:Text value="{{wan.username}}"
+                    label="{i18n.t('network.pppoeUsername')}"/>
+        <field:Password value="{{wan.password}}"
+                        label="{i18n.t('network.pppoePassword')}"/>
+    </div>
+    <ui:Field label="Mac Address">
+        <ui:RadioGroup value="{{wan.overwriteMacAddress}}">
+            <ui:Radio label="Use Default" value="false"/>
+            <ui:Radio label="Overwrite" value="true"/>
+        </ui:RadioGroup>
+        <input value="{{wan.macAddress}}"
+               enabled="{wan.overwriteMacAddress}"/>
+    </ui:Field>
+    <ui:Field>
+        <ui:Checkbox label="Use DNS Server" checked="{{wan.useDnsServer}}"/>
+    </ui:Field>
+
+
+</view:WanClass>
