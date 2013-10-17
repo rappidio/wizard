@@ -1,0 +1,27 @@
+{
+    "general": {
+        "next": "Weiter",
+        "previous": "Zurück",
+        "save": "Speichern"
+    },
+
+    "wanModes": {
+        "static": "Statisch",
+        "dhcp": "DHCP",
+        "pppoe": "PPPoE"
+    },
+
+    "step1": {
+        "title": "WAN Einstellungen"
+    },
+
+    "network": {
+        "ipAddress": "IP Adresse",
+        "netmask": "Netzmaske",
+        "gateway": "Gateway",
+
+        "pppoeUsername": "PPPoE Benutzername",
+        "pppoePassword": "PPPoE Passwort"
+    }
+
+}
