@@ -8,14 +8,8 @@ define(
             },
 
             defaults: {
-                wan: null,
-                modes: null
-            },
-
-            isWanConfigurationActive: function (type) {
-                return this.get('wan.type') === type;
-            }.onChange("wan")
-
+                lan: null
+            }
         });
     }
 );

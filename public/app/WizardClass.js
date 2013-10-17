@@ -21,10 +21,6 @@ define(
                 callback();
             },
 
-            isWanConfigurationActive: function (type) {
-                return this.get('configuration.wan.type') === type;
-            }.onChange("configuration.wan"),
-
             hasNext: function() {
                 return (this.$.currentStep < (this.$.segmentedView.$children.length-1));
             }.onChange("currentStep"),

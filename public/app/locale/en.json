@@ -15,11 +15,18 @@
         "title": "WAN Settings"
     },
 
+    "step2": {
+        "title": "LAN Settings"
+    },
+
     "network": {
         "ipAddress": "IP Address",
         "netmask": "Netmask",
         "gateway": "Gateway",
 
+        "from": "From",
+        "to": "To",
+        
         "pppoeUsername": "PPPoE Username",
         "pppoePassword": "PPPoE Password"
     }

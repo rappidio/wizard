@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<view:LanClass xmlns="http://www.w3.org/1999/xhtml"
+               xmlns:js="js.core" xmlns:ui="js.ui" xmlns:app="app" xmlns:field="js.ui.field" xmlns:view="app.view">
+    <div class="notes">{lan.enableDhcp}
+        {lan.enableDnsCache}
+        {lan.ipAddress}</div>
+
+
+    <field:Text value="{{lan.ipAddress}}" label="{i18n.t('network.ipAddress')}"/>
+    <field:Text value="{{lan.netmask}}" label="{i18n.t('network.netmask')}"/>
+    <ui:Field label="Dhcp Server">
+        <ui:Checkbox checked="{{lan.enableDhcp}}" label="Enable"/>
+    </ui:Field>
+
+    <div class="dhcp_settings" visible="{lan.enableDhcp}">
+        <field:Text value="{{lan.from}}" label="{i18n.t('network.from')}"/>
+        <field:Text value="{{lan.to}}" label="{i18n.t('network.to')}"/>
+
+        <ui:Field label="Dns Server">
+            <ui:Checkbox checked="{{lan.enableDnsCache}}" label="Enable built-in Dns Cache"/>
+        </ui:Field>
+
+        <field:Text value="{{lan.dnsServer1}}" label="DNS Server 1"/>
+        <field:Text value="{{lan.dnsServer2}}" label="DNS Server 2"/>
+    </div>
+
+</view:LanClass>

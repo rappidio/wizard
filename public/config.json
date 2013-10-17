@@ -1,6 +1,7 @@
 {
     "xamlClasses": [
         "app/Wizard",
+        "app/view/Lan",
         "app/view/Wan",
         "js/svg/SvgDescriptor",
         "js/ui/ButtonGroup",
@@ -28,7 +29,6 @@
         "js/ui/field/RadioGroup",
         "js/ui/field/Text",
         "js/ui/field/TextArea",
-        "webtest/test/html/SelectTest",
         "webtest/test/ui/ItemsViewTest",
         "webtest/test/ui/SelectionViewTest"
     ],
@@ -71,5 +71,6 @@
         "moment": {
             "exports": "moment"
         }
-    }
+    },
+    "enableInspection": true
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <view:WanClass xmlns="http://www.w3.org/1999/xhtml"
-               xmlns:js="js.core" xmlns:ui="js.ui" xmlns:app="app" xmlns:field="js.ui.field" wan="" xmlns:view="app.view">
+               xmlns:js="js.core" xmlns:ui="js.ui" xmlns:app="app" xmlns:field="js.ui.field" xmlns:view="app.view">
 
     <ui:Field label="Model">
             <select items="{configuration.modes}"

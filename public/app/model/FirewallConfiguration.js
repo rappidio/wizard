@@ -1,15 +1,17 @@
-define(['js/data/Model', 'app/entity/WanConfiguration', 'app/entity/DhcpWanConfiguration', 'app/entity/StaticWanConfiguration', 'app/entity/PppoeWanConfiguration'],
-  function (Model, WanConfiguration, DhcpWanConfiguration, StaticWanConfiguration, PppoeWanConfiguration) {
+define(['js/data/Model', 'app/entity/WanConfiguration', 'app/entity/LanConfiguration', 'app/entity/DhcpWanConfiguration', 'app/entity/StaticWanConfiguration', 'app/entity/PppoeWanConfiguration'],
+  function (Model, WanConfiguration, LanConfiguration, DhcpWanConfiguration, StaticWanConfiguration, PppoeWanConfiguration) {
 
     return Model.inherit('app.model.FirewallConfiguration', {
 
         schema: {
-            wan: WanConfiguration
+            wan: WanConfiguration,
+            lan: LanConfiguration
         },
 
         defaults: {
             wan: null,
-            modes: null
+            modes: null,
+            lan: LanConfiguration
         },
 
         ctor: function () {
