@@ -1,8 +1,11 @@
 {
     "xamlClasses": [
         "app/Wizard",
+        "app/view/Hostname",
         "app/view/Lan",
+        "app/view/Time",
         "app/view/Wan",
+        "app/view/Welcome",
         "js/svg/SvgDescriptor",
         "js/ui/ButtonGroup",
         "js/ui/Checkbox",
@@ -28,9 +31,7 @@
         "js/ui/field/Password",
         "js/ui/field/RadioGroup",
         "js/ui/field/Text",
-        "js/ui/field/TextArea",
-        "webtest/test/ui/ItemsViewTest",
-        "webtest/test/ui/SelectionViewTest"
+        "js/ui/field/TextArea"
     ],
     "namespaceMap": null,
     "rewriteMap": null,

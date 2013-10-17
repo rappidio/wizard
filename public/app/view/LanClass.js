@@ -1,6 +1,4 @@
-define(
-    ["js/ui/View", "js/core/I18n"],
-    function (View, I18n) {
+define(["js/ui/View", "js/core/I18n"], function (View, I18n) {
 
         return View.inherit({
             inject: {

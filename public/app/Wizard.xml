@@ -12,21 +12,43 @@
             <form class="span12 form-horizontal">
 
                 <ui:SegmentedView cid="segmentedView" visibleIndex="{currentStep}">
-                    <div class="step1">
+                    <div>
                         <fieldset>
-                            <legend>{i18n.t('step1.title')}</legend>
+                            <legend>{i18n.t('steps.welcome')}</legend>
+                        </fieldset>
+                        <view:Welcome />
+                    </div>
+                    <div>
+                        <fieldset>
+                            <legend>{i18n.t('steps.wan')}</legend>
                         </fieldset>
                         <view:Wan wan="{{configuration.wan}}"/>
                     </div>
 
-                    <div class="step2">
+                    <div>
                         <fieldset>
-                            <legend>{i18n.t('step2.title')}</legend>
+                            <legend>{i18n.t('steps.lan')}</legend>
                         </fieldset>
                         <view:Lan lan="{{configuration.lan}}"/>
                     </div>
-                    <div class="step3">Hostname</div>
-                    <div class="step4">Summary</div>
+                    <div>
+                        <fieldset>
+                            <legend>{i18n.t('steps.hostname')}</legend>
+                        </fieldset>
+                        <view:Hostname hostname="{{configuration.hostname}}"/>
+                    </div>
+
+                    <div>
+                        <fieldset>
+                            <legend>{i18n.t('steps.time')}</legend>
+                        </fieldset>
+                        <view:Time time="{{configuration.time}}"/>
+                    </div>
+                    <div>
+                        <fieldset>
+                            <legend>{i18n.t('steps.Summery')}</legend>
+                        </fieldset>
+                    </div>
                 </ui:SegmentedView>
 
                 <div>

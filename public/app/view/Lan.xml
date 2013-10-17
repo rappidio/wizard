@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <view:LanClass xmlns="http://www.w3.org/1999/xhtml"
-               xmlns:js="js.core" xmlns:ui="js.ui" xmlns:app="app" xmlns:field="js.ui.field" xmlns:view="app.view">
+               xmlns:ui="js.ui" xmlns:field="js.ui.field" xmlns:view="app.view">
 
     <field:Text value="{{lan.ipAddress}}" label="{i18n.t('network.ipAddress')}"/>
     <field:Text value="{{lan.netmask}}" label="{i18n.t('network.netmask')}"/>
