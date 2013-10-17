@@ -9,7 +9,13 @@ define(["js/core/Application", "app/model/FirewallConfiguration"],
                  */
                 i18n: null,
 
+                /***
+                 * @codeBehind
+                 * @type js.ui.SegmentedView
+                 */
+                steps: null,
 
+                currentStep: 0,
                 locales: null,
                 configuration: FirewallConfiguration
             },
@@ -35,14 +41,21 @@ define(["js/core/Application", "app/model/FirewallConfiguration"],
                 callback();
             },
 
-            /***
-             * checks if the "type" wan configuration is active
-             * @param type - the type to check
-             * @returns {boolean}
-             */
-            isWanConfigurationActive: function (type) {
-                return this.get("configuration.wan.type") === type;
-            }.onChange("configuration.wan")
+            next: function() {
+                this.set("currentStep", this.$.currentStep + 1);
+            },
+
+            previous: function() {
+                this.set("currentStep", this.$.currentStep - 1);
+            },
+
+            hasNext: function() {
+                return this.$.currentStep < this.$.steps.$children.length - 1;
+            }.onChange("currentStep"),
+
+            hasPrevious: function() {
+                return this.$.currentStep > 0;
+            }.onChange("currentStep")
         });
     }
 );

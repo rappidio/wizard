@@ -1,43 +1,37 @@
 <?xml version="1.0"?>
 <app:WizardClass xmlns="http://www.w3.org/1999/xhtml"
-                 xmlns:js="js.core" xmlns:ui="js.ui" xmlns:app="app" xmlns:field="js.ui.field">
+                 xmlns:js="js.core" xmlns:ui="js.ui"
+                 xmlns:app="app" xmlns:view="app.view">
 
-    <js:I18n cid="i18n" locale="de" path="app/locale" loadMomentJs="false"/>
+    <js:Injection>
+        <js:I18n cid="i18n" locale="de" path="app/locale" loadMomentJs="false"/>
+    </js:Injection>
 
     <div class="container">
 
         <div class="row">
 
             <form class="span12 form-horizontal">
-                <fieldset>
-                    <legend>{i18n.t('step1.title')}</legend>
-                </fieldset>
-                <ui:Field label="mode">
-                    <select items="{configuration.modes}"
-                            selectedItem="{{configuration.wan}}"
-                            itemKey="mode">
-                        <js:Template name="item">
-                            <option>{i18n.ts('wanModes',mode.type)}</option>
-                        </js:Template>
-                    </select>
-                </ui:Field>
-                <div class="static" visible="{isWanConfigurationActive('static')}">
-                    <field:Text value="{{configuration.wan.ipAddress}}" label="{i18n.t('network.ipAddress')}"/>
-                    <field:Text value="{{configuration.wan.netmask}}" label="{i18n.t('network.netmask')}"/>
-                    <field:Text value="{{configuration.wan.gateway}}" label="{i18n.t('network.gateway')}"/>
+                <ui:SegmentedView cid="steps" visibleIndex="{currentStep}">
+                    <div class="step1">
+                        <fieldset>
+                            <legend>{i18n.t('steps.wan')}</legend>
+                            <view:Wan wan="{{configuration.wan}}" modes="{configuration.modes}"/>
+                        </fieldset>
+                    </div>
+                    <div class="step2">
+                        <fieldset>
+                            <legend>{i18n.t('steps.lan')}</legend>
+
+                        </fieldset>
+                    </div>
+                </ui:SegmentedView>
+                <div>
+                    <ui:Button label="Previous" onclick="previous()" enabled="{hasPrevious()}"/>
+                    <ui:Button label="Next" onclick="next()" enabled="{hasNext()}"/>
                 </div>
-                <div class="pppoe" visible="{isWanConfigurationActive('pppoe')}">
-                    <field:Text value="{{configuration.wan.username}}" label="{i18n.t('network.pppoeUsername')}"/>
-                    <field:Password value="{{configuration.wan.password}}" label="{i18n.t('network.pppoePassword')}"/>
-                </div>
-                <ui:Field label="Mac Address">
-                    <ui:RadioGroup value="{{configuration.wan.overwriteMacAddress}}">
-                        <ui:Radio label="Use Default" value="false"/>
-                        <ui:Radio label="Overwrite" value="true"/>
-                    </ui:RadioGroup>
-                    <input value="{{configuration.wan.macAddress}}"
-                           enabled="{configuration.wan.overwriteMacAddress}"/>
-                </ui:Field>
+
+
             </form>
 
         </div>
