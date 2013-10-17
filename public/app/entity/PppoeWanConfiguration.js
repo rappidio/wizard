@@ -4,7 +4,8 @@ define(['app/entity/WanConfiguration'], function(WanConfiguration){
     return WanConfiguration.inherit('app.entity.PppoeWanConfiguration', {
 
         defaults: {
-            type: "pppoe"
+            type: "pppoe",
+            useDnsServer: false
         },
 
         schema: {

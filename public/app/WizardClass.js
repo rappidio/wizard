@@ -6,6 +6,7 @@ define(["js/core/Application", "app/model/FirewallConfiguration"],
 
                 i18n: null,
                 configuration: FirewallConfiguration
+
             },
              /***
              * Starts the application
@@ -20,7 +21,6 @@ define(["js/core/Application", "app/model/FirewallConfiguration"],
             },
 
             isWanConfigurationActive: function(type) {
-                console.log(type)
                 return this.get("configuration.wan.type") === type;
 
             }.onChange("configuration.wan")

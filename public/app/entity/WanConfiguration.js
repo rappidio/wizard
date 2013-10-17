@@ -5,7 +5,8 @@ define(['js/data/Entity'], function(Entity){
 
         defaults: {
             type: null,
-            "interface": "eth0"
+            "interface": "eth0",
+            useDhcpDnsServer: true
         },
 
         schema: {
@@ -16,6 +17,10 @@ define(['js/data/Entity'], function(Entity){
             dnsServer1: String,
             dnsServer2: String,
             dnsServer3: String
+        },
+
+        supportsDnsServerByDhcp: function() {
+            return true;
         }
     });
 
