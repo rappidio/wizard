@@ -9,7 +9,8 @@ define(['app/entity/WanConfiguration'], function (WanConfiguration) {
     },
 
     defaults: {
-      type: 'static'
+      type: 'static',
+      useDhcpDns: false
     }
 
   });

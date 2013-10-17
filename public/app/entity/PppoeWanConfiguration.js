@@ -6,7 +6,8 @@ define(['app/entity/WanConfiguration'], function (WanConfiguration) {
       password: String
     },
     defaults: {
-      type: 'pppoe'
+      type: 'pppoe',
+      useDhcpDns: true
     }
 
   });

@@ -1,29 +1,45 @@
 define(
-  ["js/core/Application", "app/model/FirewallConfiguration"],
-  function (Application, FirewallConfiguration) {
+    ["js/core/Application", "app/model/FirewallConfiguration"],
+    function (Application, FirewallConfiguration) {
 
-    return Application.inherit({
-      /**
-       *  initializes the application variables
-       */
-      defaults: {
-        configuration: FirewallConfiguration
-      },
-      /***
-       * Starts the application
-       * @param parameter
-       * @param callback
-       */
-      start: function (parameter, callback) {
-        // false - disables autostart
-        this.callBase(parameter, false);
+        return Application.inherit({
+            defaults: {
+                configuration: FirewallConfiguration,
+                I18n: null,
+                overwriteMacAddress: false,
+                currentStep: 0
+            },
+            /***
+             * Starts the application
+             * @param parameter
+             * @param callback
+             */
+            start: function (parameter, callback) {
+                // false - disables autostart
+                this.callBase(parameter, false);
 
-        callback();
-      },
+                callback();
+            },
 
-      isWanConfigurationActive: function(mode) {
-        return this.get('configuration.wan.type') === mode;
-      }.onChange('configuration.wan')
-    });
-  }
+            isWanConfigurationActive: function (type) {
+                return this.get('configuration.wan.type') === type;
+            }.onChange("configuration.wan"),
+
+            hasNext: function() {
+                return (this.$.currentStep < (this.$.segmentedView.$children.length-1));
+            }.onChange("currentStep"),
+
+            hasPrevious: function() {
+                return (this.$.currentStep > 0);
+            }.onChange("currentStep"),
+
+            next: function() {
+                this.set('currentStep', this.$.currentStep + 1);
+            },
+            previous: function() {
+                this.set('currentStep', this.$.currentStep - 1);
+            }
+
+        });
+    }
 );
