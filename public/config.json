@@ -71,6 +71,5 @@
         "moment": {
             "exports": "moment"
         }
-    },
-    "enableInspection": true
+    }
 }
