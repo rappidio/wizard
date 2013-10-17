@@ -1,13 +1,13 @@
 define(['app/entity/WanConfiguration'], function (WanConfiguration) {
 
-  return WanConfiguration.inherit('app.entity.DhcpWanConfiguration', {
+    return WanConfiguration.inherit('app.entity.DhcpWanConfiguration', {
 
-    defaults: {
-      type: 'dhcp',
-      useDhcpDns: true
+        defaults: {
+            type: 'dhcp',
+            useDhcpDns: true
 
-    }
+        }
 
-  });
+    });
 
 });

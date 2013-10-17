@@ -29,6 +29,15 @@
 
         "pppoeUsername": "PPPoE Benutzername",
         "pppoePassword": "PPPoE Passwort"
+    },
+
+    "label": {
+
+    },
+
+    "error": {
+        "isUndefinedError": "%0 ist nicht gesetzt",
+        "isNotIPAddressError": "%0 ist keine IP-Adresse"
     }
 
 }

@@ -1,22 +1,36 @@
 <?xml version="1.0"?>
 <app:WizardClass xmlns="http://www.w3.org/1999/xhtml"
-                 xmlns:js="js.core" xmlns:ui="js.ui" xmlns:app="app" xmlns:field="js.ui.field" xmlns:view="app.view">
+                 xmlns:js="js.core" xmlns:ui="js.ui" xmlns:app="app" xmlns:field="js.ui.field" xmlns:view="app.view"
+                 xmlns:conf="js.conf" xmlns:data="js.data">
 
 
     <js:Injection>
         <js:I18n cid="i18n" locale="de" path="app/locale" loadMomentJs="false"/>
+        <js:ErrorProvider i18n="{i18n}" />
+        <data:RestDataSource gateway="/api" cid="api">
+            <conf:DataSourceConfiguration>
+                <conf:ResourceConfiguration modelClassName="app.model.FirewallConfiguration" path="wizard" />
+            </conf:DataSourceConfiguration>
+        </data:RestDataSource>
     </js:Injection>
+
+    <js:Router>
+        <conf:RouteConfiguration route="^$" onexec="defaultRoute"/>
+        <conf:RouteConfiguration route="^step\/(\d+)$" onexec="showStep"/>
+    </js:Router>
 
     <div class="container">
         <div class="row">
+            <div class="alert alert-error" visible="{not(configuration.isValid())}">
+                Something went wrong.
+            </div>
             <form class="span12 form-horizontal">
-
                 <ui:SegmentedView cid="segmentedView" visibleIndex="{currentStep}">
                     <div>
                         <fieldset>
                             <legend>{i18n.t('steps.welcome')}</legend>
                         </fieldset>
-                        <view:Welcome />
+                        <view:Welcome/>
                     </div>
                     <div>
                         <fieldset>
@@ -24,7 +38,6 @@
                         </fieldset>
                         <view:Wan wan="{{configuration.wan}}"/>
                     </div>
-
                     <div>
                         <fieldset>
                             <legend>{i18n.t('steps.lan')}</legend>
@@ -52,10 +65,10 @@
                 </ui:SegmentedView>
 
                 <div>
-                    <ui:Button label="Previous" onclick="previous" visible="{hasPrevious()}"/>
-                    <ui:Button label="Next" onclick="next" visible="{hasNext()}"/>
+                    <ui:Button label="Previous" visible="{hasPrevious()}" href="{navigateLink(-1)}"/>
+                    <ui:Button label="Next" visible="{hasNext()}" href="{navigateLink(1)}"/>
+                    <ui:Button label="Save" visible="{hasNext()}" onclick="save"/>
                 </div>
-
 
             </form>
         </div>

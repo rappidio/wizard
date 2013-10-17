@@ -20,7 +20,7 @@
         <field:Text value="{{wan.username}}" label="{i18n.t('network.pppoeUsername')}"/>
         <field:Password value="{{wan.password}}" label="{i18n.t('network.pppoePassword')}"/>
     </div>
-    <ui:Field label="Mac Address">
+    <ui:Field label="Mac Address" value="{wan.macAddress}">
         <ui:RadioGroup value="{{overwriteMacAddress}}">
             <ui:Radio label="Use Default" value="false"/>
             <ui:Radio label="Overwrite" value="true"/>
