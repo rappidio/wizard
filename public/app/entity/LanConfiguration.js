@@ -7,9 +7,9 @@ define(['js/data/Entity'], function(Entity){
             ipAddress: String,
             netmask: String,
             enableDhcp: Boolean,
-            from: String,
-            to: String,
-            enableDnsCache: Boolean, //{required: false, type: String},
+            from: { required: function() {return !this.$.enableDhcp;}, type: String},
+            to: { required: function() {return !this.$.enableDhcp;}, type: String},
+            enableDnsCache: Boolean,
             dnsServer1: {required: false, type: String},
             dnsServer2: {required: false, type: String}
         },

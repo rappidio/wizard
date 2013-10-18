@@ -1,8 +1,11 @@
 <?xml version="1.0"?>
 <view:WelcomeClass xmlns="http://www.w3.org/1999/xhtml"
-                    xmlns:js="js.core" xmlns:ui="js.ui" xmlns:view="app.view" xmlns:field="js.ui.field">
+                   xmlns:js="js.core" xmlns:ui="js.ui" xmlns:view="app.view"
+                   xmlns:field="js.ui.field">
 
-    <div>
-        WElcome
-    </div>
+  <div>
+    <p>Welcome to your new Network Protector.</p>
+    <p>This wizard should helps you to create to initial setup.</p>
+    <p>If you like to use the default settings just skip the wizard.</p>
+  </div>
 </view:WelcomeClass>

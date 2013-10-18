@@ -59,7 +59,7 @@
                     </div>
                     <div>
                         <fieldset>
-                            <legend>{i18n.t('steps.Summery')}</legend>
+                            <legend>{i18n.t('steps.summary')}</legend>
                         </fieldset>
                     </div>
                 </ui:SegmentedView>
@@ -67,7 +67,7 @@
                 <div>
                     <ui:Button label="Previous" visible="{hasPrevious()}" href="{navigateLink(-1)}"/>
                     <ui:Button label="Next" visible="{hasNext()}" href="{navigateLink(1)}"/>
-                    <ui:Button label="Save" visible="{hasNext()}" onclick="save"/>
+                    <ui:Button label="Save" visible="{not(hasNext())}" onclick="save"/>
                 </div>
 
             </form>

@@ -12,27 +12,27 @@
             </select>
         </ui:Field>
     <div class="static" visible="{isWanConfigurationActive('static')}">
-        <field:Text value="{{wan.ipAddress}}" label="{i18n.t('network.ipAddress')}"/>
-        <field:Text value="{{wan.netmask}}" label="{i18n.t('network.netmask')}"/>
-        <field:Text value="{{wan.gateway}}" label="{i18n.t('network.gateway')}"/>
+        <field:Text value="{{wan.ipAddress}}" label="{i18n.t('fields.ipAddress')}"/>
+        <field:Text value="{{wan.netmask}}" label="{i18n.t('fields.netmask')}"/>
+        <field:Text value="{{wan.gateway}}" label="{i18n.t('fields.gateway')}"/>
     </div>
     <div class="pppoe" visible="{isWanConfigurationActive('pppoe')}">
-        <field:Text value="{{wan.username}}" label="{i18n.t('network.pppoeUsername')}"/>
-        <field:Password value="{{wan.password}}" label="{i18n.t('network.pppoePassword')}"/>
+        <field:Text value="{{wan.username}}" label="{i18n.t('fields.pppoeUsername')}"/>
+        <field:Password value="{{wan.password}}" label="{i18n.t('fields.pppoePassword')}"/>
     </div>
-    <ui:Field label="Mac Address" value="{wan.macAddress}">
+    <ui:Field label="{i18n.t('fields.macAddress')}" value="{wan.macAddress}">
         <ui:RadioGroup value="{{overwriteMacAddress}}">
-            <ui:Radio label="Use Default" value="false"/>
-            <ui:Radio label="Overwrite" value="true"/>
+            <ui:Radio label="{i18n.t('fields.useDefault')}" value="false"/>
+            <ui:Radio label="{i18n.t('fields.overwrite')}" value="true"/>
         </ui:RadioGroup>
         <input value="{{wan.macAddress}}" enabled="{overwriteMacAddress}"/>
     </ui:Field>
-    <ui:Field label="Dns Server" visible="{not(isWanConfigurationActive('static'))}">
-        <ui:Checkbox checked="{{wan.useDhcpDns}}" label="DNS from DHCP"/>
+    <ui:Field label="{i18n.t('fields.dnsServer')}" visible="{not(isWanConfigurationActive('static'))}">
+        <ui:Checkbox checked="{{wan.useDhcpDns}}" label="{i18n.t('fields.dnsFromDhcp')}"/>
     </ui:Field>
     <div class="dns_manual" visible="{not(wan.useDhcpDns)}">
-        <field:Text value="{{wan.dnsServer1}}" label="DNS Server 1"/>
-        <field:Text value="{{wan.dnsServer2}}" label="DNS Server 2"/>
-        <field:Text value="{{wan.dnsServer3}}" label="DNS Server 3"/>
+        <field:Text value="{{wan.dnsServer1}}" label="{i18n.t('fields.dnsServers', 1)}"/>
+        <field:Text value="{{wan.dnsServer2}}" label="{i18n.t('fields.dnsServers', 2)}"/>
+        <field:Text value="{{wan.dnsServer3}}" label="{i18n.t('fields.dnsServers', 3)}"/>
     </div>
 </view:WanClass>

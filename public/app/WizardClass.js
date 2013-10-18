@@ -65,7 +65,7 @@ define(["js/core/Application", "app/model/FirewallConfiguration", "js/core/Histo
 
             showStep: function(routeContext, step) {
 
-                if (step > 0 && step < (this.$.segmentedView.$children.length - 1)) {
+                if (step > 0 && step < (this.$.segmentedView.$children.length + 1)) {
 
                     if (step - 2 === this.$.currentStep) {
 

@@ -13,7 +13,8 @@ define(['js/data/Model', 'app/entity/WanConfiguration', 'app/entity/DhcpWanConfi
             defaults: {
                 wan: null,
                 lan: LanConfiguration,
-                modes: null
+                modes: null,
+                time: TimeConfiguration
             },
 
             ctor: function () {

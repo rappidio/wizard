@@ -1,34 +1,55 @@
 {
-    "general": {
-        "next": "Next",
-        "previous": "Previous",
-        "save": "Save"
-    },
+  "general": {
+    "next": "Next",
+    "previous": "Previous",
+    "save": "Save"
+  },
 
-    "wanModes": {
-        "static": "Static",
-        "dhcp": "DHCP",
-        "pppoe": "PPPoE"
-    },
+  "wanModes": {
+    "static": "Static",
+    "dhcp": "DHCP",
+    "pppoe": "PPPoE"
+  },
 
-    "step1": {
-        "title": "WAN Settings"
-    },
+  "steps": {
+    "welcome": "Welcome",
+    "wan": "WAN Settings",
+    "lan": "LAN Settings",
+    "hostname": "Hostname",
+    "time": "Time Settings",
+    "summary": "Summary"
+  },
 
-    "step2": {
-        "title": "LAN Settings"
-    },
+  "fields": {
+    "ipAddress": "IP Address",
+    "netmask": "Netmask",
+    "gateway": "Gateway",
 
-    "network": {
-        "ipAddress": "IP Address",
-        "netmask": "Netmask",
-        "gateway": "Gateway",
+    "macAddress": "Mac Adress",
+    "useDefault": "Use Default",
+    "overwrite": "Overwrite",
 
-        "from": "From",
-        "to": "To",
-        
-        "pppoeUsername": "PPPoE Username",
-        "pppoePassword": "PPPoE Password"
-    }
+    "dnsServer": "Dns Server %0",
+    "dnsFromDhcp": "DNS from DHCP",
+
+    "dhcpServer": "Dhcp Server",
+
+    "from": "From",
+    "to": "To",
+
+    "pppoeUsername": "PPPoE Username",
+    "pppoePassword": "PPPoE Password",
+
+    "hostname": "Hostname",
+
+    "date": "Date",
+    "time": "Time",
+    "timeZone": "Zeitzone"
+
+  },
+
+  "error": {
+    "isNotIPAddressError": "%0 is no IP address"
+  }
 
 }

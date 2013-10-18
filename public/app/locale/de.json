@@ -11,27 +11,44 @@
         "pppoe": "PPPoE"
     },
 
-    "step1": {
-        "title": "WAN Einstellungen"
+    "steps": {
+      "welcome": "Willkommen",
+      "wan": "WAN Einstellungen",
+      "lan": "LAN Einstellungen",
+      "hostname": "Hostname",
+      "time": "Zeit Einstellungen",
+      "summary": "Zusammenfassung"
     },
 
-    "step2": {
-        "title": "LAN Einstellungen"
-    },
+    "fields": {
+      "enable": "Enable",
 
-    "network": {
-        "ipAddress": "IP Adresse",
-        "netmask": "Netzmaske",
-        "gateway": "Gateway",
+      "ipAddress": "IP Adresse",
+      "netmask": "Netzmaske",
+      "gateway": "Gateway",
 
-        "from": "Von",
-        "to": "Bis",
+      "macAddress": "Mac Adresse",
+      "useDefault": "Nutze Standard",
+      "overwrite": "Überschreiben",
 
-        "pppoeUsername": "PPPoE Benutzername",
-        "pppoePassword": "PPPoE Passwort"
-    },
+      "dnsServer": "Dns Server",
+      "dnsServers": "Dns Server %0",
+      "dnsFromDhcp": "DNS from DHCP",
+      "enableDnsCache": "Enable built-in Dns Cache",
 
-    "label": {
+      "dhcpServer": "Dhcp Server",
+
+      "from": "Von",
+      "to": "Bis",
+
+      "pppoeUsername": "PPPoE Benutzername",
+      "pppoePassword": "PPPoE Passwort",
+
+      "hostname": "Hostname",
+
+      "date": "Datum",
+      "time": "Uhrzeit",
+      "timeZone": "Zeitzone"
 
     },
 
