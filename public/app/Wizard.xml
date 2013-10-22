@@ -50,13 +50,6 @@
             </fieldset>
             <view:Hostname hostname="{{configuration.hostname}}"/>
           </div>
-
-          <div>
-            <fieldset>
-              <legend>{i18n.t('steps.time')}</legend>
-            </fieldset>
-            <view:Time time="{{configuration.time}}"/>
-          </div>
           <div>
             <fieldset>
               <legend>{i18n.t('steps.summary')}</legend>

@@ -1,19 +1,17 @@
-define(['js/data/Model', 'app/entity/WanConfiguration', 'app/entity/TimeConfiguration', 'app/entity/LanConfiguration'],
-    function (Model, WanConfiguration, TimeConfiguration, LanConfiguration) {
+define(['js/data/Model', 'app/entity/WanConfiguration', 'app/entity/LanConfiguration'],
+    function (Model, WanConfiguration, LanConfiguration) {
 
   return Model.inherit('app.model.FirewallConfiguration', {
 
     schema: {
       wan: WanConfiguration,
       lan: LanConfiguration,
-      hostname: String,
-      time: TimeConfiguration
+      hostname: String
     },
 
     defaults: {
       wan: WanConfiguration,
-      lan: LanConfiguration,
-      time: TimeConfiguration
+      lan: LanConfiguration
     }
 
 //    ctor: function () {
