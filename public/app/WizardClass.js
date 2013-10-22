@@ -72,14 +72,6 @@ define(["js/core/Application", "app/model/FirewallConfiguration", "js/core/Histo
         success();
       }
     },
-    clearErrors: function (step) {
-      var fields = this.stepName(step);
-
-      if (fields) {
-        this.$.configuration.$[fields].clearErrors();
-      }
-      this.$.configuration.clearErrors();
-    },
 
     next: function () {
       var self = this;
