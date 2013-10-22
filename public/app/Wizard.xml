@@ -4,73 +4,73 @@
                  xmlns:conf="js.conf" xmlns:data="js.data">
 
 
-    <js:Injection>
-        <js:I18n cid="i18n" locale="de" path="app/locale" loadMomentJs="false"/>
-        <js:ErrorProvider i18n="{i18n}" />
-        <data:RestDataSource gateway="/api" cid="api">
-            <conf:DataSourceConfiguration>
-                <conf:ResourceConfiguration modelClassName="app.model.FirewallConfiguration" path="wizard" />
-            </conf:DataSourceConfiguration>
-        </data:RestDataSource>
-    </js:Injection>
+  <js:Injection>
+    <js:I18n cid="i18n" locale="de" path="app/locale" loadMomentJs="false"/>
+    <js:ErrorProvider i18n="{i18n}"/>
+    <data:RestDataSource gateway="/api" cid="api">
+      <conf:DataSourceConfiguration>
+        <conf:ResourceConfiguration modelClassName="app.model.FirewallConfiguration" path="wizard"/>
+      </conf:DataSourceConfiguration>
+    </data:RestDataSource>
+  </js:Injection>
 
-    <js:Router>
-        <conf:RouteConfiguration route="^$" onexec="defaultRoute"/>
-        <conf:RouteConfiguration route="^step\/(\d+)$" onexec="showStep"/>
-    </js:Router>
+  <js:Router>
+    <conf:RouteConfiguration route="^$" onexec="defaultRoute"/>
+    <conf:RouteConfiguration route="^step\/(\d+)$" onexec="showStep"/>
+  </js:Router>
 
-    <div class="container">
-        <div class="row">
-            <div class="alert alert-error" visible="{not(configuration.isValid())}">
-                Something went wrong.
-            </div>
-            <form class="span12 form-horizontal">
-                <ui:SegmentedView cid="segmentedView" visibleIndex="{currentStep}">
-                    <div>
-                        <fieldset>
-                            <legend>{i18n.t('steps.welcome')}</legend>
-                        </fieldset>
-                        <view:Welcome/>
-                    </div>
-                    <div>
-                        <fieldset>
-                            <legend>{i18n.t('steps.wan')}</legend>
-                        </fieldset>
-                        <view:Wan wan="{{configuration.wan}}"/>
-                    </div>
-                    <div>
-                        <fieldset>
-                            <legend>{i18n.t('steps.lan')}</legend>
-                        </fieldset>
-                        <view:Lan lan="{{configuration.lan}}"/>
-                    </div>
-                    <div>
-                        <fieldset>
-                            <legend>{i18n.t('steps.hostname')}</legend>
-                        </fieldset>
-                        <view:Hostname hostname="{{configuration.hostname}}"/>
-                    </div>
+  <div class="container">
+    <div class="row">
+      <div class="alert alert-error" visible="{not(configuration.isValid())}">
+        Something went wrong.
+      </div>
+      <form class="form span12 form-horizontal">
+        <ui:SegmentedView cid="segmentedView" visibleIndex="{currentStep}">
+          <div>
+            <fieldset>
+              <legend>{i18n.t('steps.welcome')}</legend>
+            </fieldset>
+            <view:Welcome/>
+          </div>
+          <div>
+            <fieldset>
+              <legend>{i18n.t('steps.wan')}</legend>
+            </fieldset>
+            <view:Wan wan="{{configuration.wan}}"/>
+          </div>
+          <div>
+            <fieldset>
+              <legend>{i18n.t('steps.lan')}</legend>
+            </fieldset>
+            <view:Lan lan="{{configuration.lan}}"/>
+          </div>
+          <div>
+            <fieldset>
+              <legend>{i18n.t('steps.hostname')}</legend>
+            </fieldset>
+            <view:Hostname hostname="{{configuration.hostname}}"/>
+          </div>
 
-                    <div>
-                        <fieldset>
-                            <legend>{i18n.t('steps.time')}</legend>
-                        </fieldset>
-                        <view:Time time="{{configuration.time}}"/>
-                    </div>
-                    <div>
-                        <fieldset>
-                            <legend>{i18n.t('steps.summary')}</legend>
-                        </fieldset>
-                    </div>
-                </ui:SegmentedView>
+          <div>
+            <fieldset>
+              <legend>{i18n.t('steps.time')}</legend>
+            </fieldset>
+            <view:Time time="{{configuration.time}}"/>
+          </div>
+          <div>
+            <fieldset>
+              <legend>{i18n.t('steps.summary')}</legend>
+            </fieldset>
+          </div>
+        </ui:SegmentedView>
 
-                <div>
-                    <ui:Button label="Previous" visible="{hasPrevious()}" href="{navigateLink(-1)}"/>
-                    <ui:Button label="Next" visible="{hasNext()}" href="{navigateLink(1)}"/>
-                    <ui:Button label="Save" visible="{not(hasNext())}" onclick="save"/>
-                </div>
-
-            </form>
+        <div class="form-actions">
+          <ui:Button label="Previous" enabled="{hasPrevious()}" href="{navigateLink(-1)}"/>
+          <ui:Button label="Next" enabled="{hasNext()}" href="{navigateLink(1)}"/>
+          <ui:Button label="Save" enabled="{not(hasNext())}" onclick="save"/>
         </div>
+
+      </form>
     </div>
+  </div>
 </app:WizardClass>

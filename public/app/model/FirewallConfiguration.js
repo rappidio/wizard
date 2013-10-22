@@ -1,29 +1,23 @@
-define(['js/data/Model', 'app/entity/WanConfiguration', 'app/entity/DhcpWanConfiguration', 'app/entity/StaticWanConfiguration', 'app/entity/PppoeWanConfiguration', 'app/entity/TimeConfiguration', 'app/entity/LanConfiguration'],
-    function (Model, WanConfiguration, DhcpWanConfiguration, StaticWanConfiguration, PppoeWanConfiguration, TimeConfiguration, LanConfiguration) {
+define(['js/data/Model', 'app/entity/WanConfiguration', 'app/entity/TimeConfiguration', 'app/entity/LanConfiguration'],
+    function (Model, WanConfiguration, TimeConfiguration, LanConfiguration) {
 
-        return Model.inherit('app.model.FirewallConfiguration', {
+  return Model.inherit('app.model.FirewallConfiguration', {
 
-            schema: {
-                wan: WanConfiguration,
-                lan: LanConfiguration,
-                hostname: String,
-                time: TimeConfiguration
-            },
+    schema: {
+      wan: WanConfiguration,
+      lan: LanConfiguration,
+      hostname: String,
+      time: TimeConfiguration
+    },
 
-            defaults: {
-                wan: null,
-                lan: LanConfiguration,
-                modes: null,
-                time: TimeConfiguration
-            },
+    defaults: {
+      wan: WanConfiguration,
+      lan: LanConfiguration,
+      time: TimeConfiguration
+    }
 
-            ctor: function () {
-                this.callBase();
-                this.set('modes', [
-                    new DhcpWanConfiguration(),
-                    new StaticWanConfiguration(),
-                    new PppoeWanConfiguration()
-                ])
-            }
-        });
-    });
+//    ctor: function () {
+//      this.callBase();
+//    }
+  });
+});

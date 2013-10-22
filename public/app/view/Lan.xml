@@ -8,16 +8,16 @@
         <ui:Checkbox checked="{{lan.enableDhcp}}" label="{i18n.t('fields.enable')}"/>
     </ui:Field>
 
-    <div class="dhcp_settings" visible="{lan.enableDhcp}">
-        <field:Text value="{{lan.from}}" label="{i18n.t('fields.from')}"/>
-        <field:Text value="{{lan.to}}" label="{i18n.t('fields.to')}"/>
+    <div class="dhcp_settings">
+        <field:Text enabled="{lan.enableDhcp}" value="{{lan.from}}" label="{i18n.t('fields.from')}"/>
+        <field:Text enabled="{lan.enableDhcp}" value="{{lan.to}}" label="{i18n.t('fields.to')}"/>
 
         <ui:Field label="Dns Server">
-            <ui:Checkbox checked="{{lan.enableDnsCache}}" label="{i18n.t('fields.enableDnsCache')}"/>
+            <ui:Checkbox enabled="{lan.enableDhcp}" checked="{{lan.enableDnsCache}}" label="{i18n.t('fields.enableDnsCache')}"/>
         </ui:Field>
 
-        <field:Text value="{{lan.dnsServer1}}" label="DNS Server 1"/>
-        <field:Text value="{{lan.dnsServer2}}" label="DNS Server 2"/>
+        <field:Text enabled="{lan.enableDnsCache}" value="{{lan.dnsServer1}}" label="DNS Server 1"/>
+        <field:Text enabled="{lan.enableDnsCache}" value="{{lan.dnsServer2}}" label="DNS Server 2"/>
     </div>
 
 </view:LanClass>
