@@ -1,23 +1,20 @@
 define(["js/ui/View", "js/core/I18n"], function (View, I18n) {
 
-    return View.inherit({
-      inject: {
-        i18n: I18n
-      },
+  var modes = ['dhcp', 'static', 'pppoe'];
 
-      defaults: {
-        wan: null,
-        modes: ['dhcp', 'static', 'pppoe']
-      },
+  return View.inherit({
+    inject: {
+      i18n: I18n
+    },
 
-      isStatic: function () {
-        return this.get('wan.mode') === 'static';
-      }.onChange("wan.mode"),
+    defaults: {
+      wan: null,
+      modes: modes
+    },
 
-      isPppoe: function () {
-        return this.get('wan.mode') === 'pppoe';
-      }.onChange("wan.mode")
+    is: function (mode) {
+      return this.get('wan.mode') === mode;
+    }.onChange("wan.mode")
 
-    });
-  }
-);
+  });
+});
