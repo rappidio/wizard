@@ -1,5 +1,0 @@
-<?xml version="1.0"?>
-<view:HostnameClass xmlns="http://www.w3.org/1999/xhtml"
-                    xmlns:view="app.view" xmlns:field="js.ui.field">
-    <field:Text value="{{hostname}}" label="{i18n.t('fields.hostname')}" />
-</view:HostnameClass>

@@ -47,13 +47,17 @@ define(["js/core/Application", "app/model/FirewallConfiguration", "js/core/Histo
       return (this.$.currentStep > 0);
     }.onChange("currentStep"),
 
+    nextButtonLabel: function () {
+      return this.hasNext() ? 'Next' : 'Save';
+    }.onChange("currentStep"),
+
     stepsToValidate: function(stepNumber) {
       switch (stepNumber) {
         case 1:
           return "wan";
         case 2:
           return "lan";
-        case 3:
+        case 0:
           return "hostname";
       }
       return null;
@@ -74,10 +78,14 @@ define(["js/core/Application", "app/model/FirewallConfiguration", "js/core/Histo
     },
 
     next: function () {
-      var self = this;
-      self.validateCurrentStep(function(){
-        self.set('currentStep', self.$.currentStep + 1);
-      });
+      if (this.hasNext()){
+        var self = this;
+        self.validateCurrentStep(function () {
+          self.set('currentStep', self.$.currentStep + 1);
+        });
+      } else {
+        this.save();
+      }
     },
 
     save: function () {

@@ -8,4 +8,6 @@
     <p>This wizard should helps you to create to initial setup.</p>
     <p>If you like to use the default settings just skip the wizard.</p>
   </div>
+
+  <field:Text value="{{hostname.hostname}}" label="{i18n.t('fields.hostname')}"/>
 </view:WelcomeClass>

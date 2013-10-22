@@ -22,7 +22,7 @@
   <div class="container">
     <div class="row">
       <div class="alert alert-error" visible="{not(configuration.isValid())}">
-        Something went wrong.
+        Validation error.
       </div>
       <form class="form span12 form-horizontal">
         <ui:SegmentedView cid="segmentedView" visibleIndex="{currentStep}">
@@ -30,7 +30,7 @@
             <fieldset>
               <legend>{i18n.t('steps.welcome')}</legend>
             </fieldset>
-            <view:Welcome/>
+            <view:Welcome hostname="{{configuration.hostname}}"/>
           </div>
           <div>
             <fieldset>
@@ -46,12 +46,6 @@
           </div>
           <div>
             <fieldset>
-              <legend>{i18n.t('steps.hostname')}</legend>
-            </fieldset>
-            <view:Hostname hostname="{{configuration.hostname}}"/>
-          </div>
-          <div>
-            <fieldset>
               <legend>{i18n.t('steps.summary')}</legend>
             </fieldset>
           </div>
@@ -59,8 +53,7 @@
 
         <div class="form-actions">
           <ui:Button label="Previous" enabled="{hasPrevious()}" onclick="previous()"/>
-          <ui:Button label="Next" enabled="{hasNext()}" onclick="next()"/>
-          <ui:Button label="Save" enabled="{not(hasNext())}" onclick="save"/>
+          <ui:Button label="{nextButtonLabel()}" onclick="next()" class="btn btn-primary"/>
         </div>
 
       </form>

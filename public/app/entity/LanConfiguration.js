@@ -11,7 +11,7 @@ define(['js/data/Entity'], function (Entity) {
       netmask: String,
       enableDhcp: Boolean,
       from: { required: whenDhcpEnabled, type: String},
-      to: { required: whenDhcpEnabled, type: String},
+      to:   { required: whenDhcpEnabled, type: String},
       enableDnsCache: Boolean,
       dnsServer1: {required: false, type: String},
       dnsServer2: {required: false, type: String}
@@ -20,8 +20,8 @@ define(['js/data/Entity'], function (Entity) {
     defaults: {
       enableDhcp: false,
       enableDnsCache: false
-
     },
+
     _commitEnableDhcp: function (newDhcp) {
       if (newDhcp === false) {
         this.set('from', '');
@@ -29,6 +29,7 @@ define(['js/data/Entity'], function (Entity) {
         this.set('enableDnsCache', false);
       }
     },
+
     _commitEnableDnsCache: function (newDnsCache) {
       if (newDnsCache === false) {
         this.set('dnsServer1', '');
