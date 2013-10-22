@@ -5,7 +5,7 @@
 
 
   <js:Injection>
-    <js:I18n cid="i18n" locale="de" path="app/locale" loadMomentJs="false"/>
+    <js:I18n cid="i18n" locale="en" path="app/locale" loadMomentJs="false"/>
     <js:ErrorProvider i18n="{i18n}"/>
     <data:RestDataSource gateway="/api" cid="api">
       <conf:DataSourceConfiguration>
@@ -14,10 +14,10 @@
     </data:RestDataSource>
   </js:Injection>
 
-  <js:Router>
-    <conf:RouteConfiguration route="^$" onexec="defaultRoute"/>
-    <conf:RouteConfiguration route="^step\/(\d+)$" onexec="showStep"/>
-  </js:Router>
+  <!--<js:Router>-->
+    <!--<conf:RouteConfiguration route="^$" onexec="defaultRoute"/>-->
+    <!--<conf:RouteConfiguration route="^step\/(\d+)$" onexec="showStep"/>-->
+  <!--</js:Router>-->
 
   <div class="container">
     <div class="row">
@@ -65,8 +65,8 @@
         </ui:SegmentedView>
 
         <div class="form-actions">
-          <ui:Button label="Previous" enabled="{hasPrevious()}" href="{navigateLink(-1)}"/>
-          <ui:Button label="Next" enabled="{hasNext()}" href="{navigateLink(1)}"/>
+          <ui:Button label="Previous" enabled="{hasPrevious()}" onclick="previous()"/>
+          <ui:Button label="Next" enabled="{hasNext()}" onclick="next()"/>
           <ui:Button label="Save" enabled="{not(hasNext())}" onclick="save"/>
         </div>
 
