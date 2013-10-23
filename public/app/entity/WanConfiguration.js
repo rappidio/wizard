@@ -68,6 +68,7 @@ define(['js/data/Entity', 'app/validator/IpAddressValidator'], function (Entity,
       new IpAddressValidator({field: "staticNetmask"}),
       new IpAddressValidator({field: "staticGateway"})
     ],
+
     _commitMode: function(newMode, oldMode){
       if (newMode !== 'pppoe') {
         this.set('pppoeUsername', '');

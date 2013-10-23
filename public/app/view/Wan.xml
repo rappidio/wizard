@@ -33,18 +33,16 @@
         <field:Password value="{{wan.pppoePassword}}" label="{i18n.t('fields.pppoePassword')}"/>
       </div>
     </div>
-
-
   </div>
 
   <div class="row">
     <div class="span6">
-      <ui:Field label="{i18n.t('fields.dnsServer')}" enabled="{not(is('static'))}">
-        <ui:Checkbox checked="{{wan.useDhcpDns}}" label="{i18n.t('fields.dnsFromDhcp')}"/>
+      <ui:Field label="DNS Server">
+        <ui:Checkbox enabled="{not(is('static'))}" checked="{{wan.useDhcpDns}}" label="get from DHCP"/>
       </ui:Field>
-      <field:Text enabled="{not(wan.useDhcpDns)}" value="{{wan.dnsServer1}}" label="{i18n.t('fields.dnsServers', 1)}"/>
-      <field:Text enabled="{not(wan.useDhcpDns)}" value="{{wan.dnsServer2}}" label="{i18n.t('fields.dnsServers', 2)}"/>
-      <field:Text enabled="{not(wan.useDhcpDns)}" value="{{wan.dnsServer3}}" label="{i18n.t('fields.dnsServers', 3)}"/>
+      <field:Text enabled="{not(wan.useDhcpDns)}" value="{{wan.dnsServer1}}" label="DNS Server 1"/>
+      <field:Text enabled="{not(wan.useDhcpDns)}" value="{{wan.dnsServer2}}" label="DNS Server 2"/>
+      <field:Text enabled="{not(wan.useDhcpDns)}" value="{{wan.dnsServer3}}" label="DNS Server 3"/>
     </div>
   </div>
 
