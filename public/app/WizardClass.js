@@ -67,7 +67,7 @@ define(["js/core/Application", "app/model/FirewallConfiguration", "js/core/Histo
       var stepToValidate = this.stepsToValidate(this.$.currentStep);
       var self = this;
       if (stepToValidate) {
-        this.$.configuration.validate({fields: stepToValidate}, function (err) {
+        this.$.configuration.validate({fields: [stepToValidate]}, function (err) {
           if (self.$.configuration.$[stepToValidate].isValid()) {
             success();
           }
