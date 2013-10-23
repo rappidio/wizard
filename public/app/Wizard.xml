@@ -14,49 +14,43 @@
     </data:RestDataSource>
   </js:Injection>
 
-  <!--<js:Router>-->
-    <!--<conf:RouteConfiguration route="^$" onexec="defaultRoute"/>-->
-    <!--<conf:RouteConfiguration route="^step\/(\d+)$" onexec="showStep"/>-->
-  <!--</js:Router>-->
+  <div cid="wizardModal" class="">
 
-  <div class="container">
-    <div class="row">
+    <form class="form span12 form-horizontal">
       <div class="alert alert-error" visible="{not(configuration.isValid())}">
         Validation error.
       </div>
-      <form class="form span12 form-horizontal">
-        <ui:SegmentedView cid="segmentedView" visibleIndex="{currentStep}">
-          <div>
-            <fieldset>
-              <legend>{i18n.t('steps.welcome')}</legend>
-            </fieldset>
-            <view:Welcome hostname="{{configuration.hostname}}"/>
+      <ui:SegmentedView cid="segmentedView" visibleIndex="{currentStep}">
+        <div>
+          <div class="modal-header">
+            <h3>{i18n.t('steps.welcome')}</h3>
           </div>
-          <div>
-            <fieldset>
-              <legend>{i18n.t('steps.wan')}</legend>
-            </fieldset>
-            <view:Wan wan="{{configuration.wan}}"/>
-          </div>
-          <div>
-            <fieldset>
-              <legend>{i18n.t('steps.lan')}</legend>
-            </fieldset>
-            <view:Lan lan="{{configuration.lan}}"/>
-          </div>
-          <div>
-            <fieldset>
-              <legend>{i18n.t('steps.summary')}</legend>
-            </fieldset>
-          </div>
-        </ui:SegmentedView>
-
-        <div class="form-actions">
-          <ui:Button label="Previous" enabled="{hasPrevious()}" onclick="previous()"/>
-          <ui:Button label="{nextButtonLabel()}" onclick="next()" class="btn btn-primary"/>
+          <view:Welcome class="modal-body" hostname="{{configuration.hostname}}"/>
         </div>
+        <div>
+          <div class="modal-header">
+            <h3>{i18n.t('steps.wan')}</h3>
+          </div>
+          <view:Wan class="modal-body" wan="{{configuration.wan}}"/>
+        </div>
+        <div>
+          <div class="modal-header">
+            <h3>{i18n.t('steps.lan')}</h3>
+          </div>
+          <view:Lan class="modal-body" lan="{{configuration.lan}}"/>
+        </div>
+        <div>
+          <div class="modal-header">
+            <h3>{i18n.t('steps.summary')}</h3>
+          </div>
+        </div>
+      </ui:SegmentedView>
 
-      </form>
-    </div>
+      <div class="modal-footer">
+        <ui:Button label="Previous" enabled="{hasPrevious()}" onclick="previous()"/>
+        <ui:Button label="{nextButtonLabel()}" onclick="next()" class="btn btn-primary"/>
+      </div>
+    </form>
   </div>
+
 </app:WizardClass>
