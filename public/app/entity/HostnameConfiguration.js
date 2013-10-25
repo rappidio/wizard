@@ -9,7 +9,7 @@ define(['js/data/Entity'], function (Entity) {
     },
 
     defaults: {
-      hostname: ''
+      hostname: 'networkprotector.local'
     }
 
   });

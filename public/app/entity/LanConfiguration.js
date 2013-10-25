@@ -21,6 +21,8 @@ define(['js/data/Entity', 'app/validator/IpAddressValidator', 'app/validator/Net
 
     defaults: {
       name: 'LAN',
+      ipAddress: '2.2.2.2',
+      netmask: '255.255.255.0',
       enableDhcp: false,
       enableDnsCache: false
     },
