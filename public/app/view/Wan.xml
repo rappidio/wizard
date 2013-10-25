@@ -4,6 +4,10 @@
 
   <field:Text value="{{wan.name}}" label="Name"/>
 
+  <ui:Field label="NAT">
+    <ui:Checkbox checked="{{wan.enableNat}}" label=""/>
+  </ui:Field>
+
   <ui:Field label="Mode">
     <select items="{modes}"
             selectedItem="{{wan.mode}}"

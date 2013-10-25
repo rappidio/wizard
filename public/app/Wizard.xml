@@ -54,7 +54,7 @@
               <view:Wan wan="{{configuration.wan}}"/>
               <view:Lan lan="{{configuration.lan}}"/>
               <view:Time time="{{configuration.time}}"/>
-              <view:Summary coniguration="{{configuration}}"/>
+              <view:Summary configuration="{{configuration}}"/>
             </ui:SegmentedView>
           </div>
         </div>

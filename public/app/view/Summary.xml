@@ -1,7 +1,29 @@
 <?xml version="1.0"?>
 <view:SummaryClass xmlns="http://www.w3.org/1999/xhtml"
-               xmlns:ui="js.ui" xmlns:field="js.ui.field" xmlns:view="app.view">
+                   xmlns:ui="js.ui" xmlns:field="js.ui.field" xmlns:view="app.view">
 
-
+  <table class="table table-condensed">
+    <tr>
+      <th>Hostname</th>
+      <td colspan="2">{configuration.hostname.hostname}</td>
+    </tr>
+    <tr>
+      <th rowspan="4">WAN</th>
+      <th>Name</th>
+      <td>{configuration.wan.name}</td>
+    </tr>
+    <tr>
+      <th>NAT</th>
+      <td>{labelNat()}</td>
+    </tr>
+    <tr>
+      <th>Mode</th>
+      <td>{i18n.ts('wanModes', configuration.wan.mode)}</td>
+    </tr>
+    <tr>
+      <th>DNS</th>
+      <td>{labelDnsServer()}</td>
+    </tr>
+  </table>
 
 </view:SummaryClass>
