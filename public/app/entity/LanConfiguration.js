@@ -27,11 +27,6 @@ define(['js/data/Entity'], function (Entity) {
         this.set('from', '');
         this.set('to', '');
         this.set('enableDnsCache', false);
-      }
-    },
-
-    _commitEnableDnsCache: function (newDnsCache) {
-      if (newDnsCache === false) {
         this.set('dnsServer1', '');
         this.set('dnsServer2', '');
       }

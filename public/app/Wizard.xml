@@ -16,58 +16,51 @@
 
     <div id="wizard" cid="wizardModal" class="modal fade in" >
 
-      <form class="form">
+      <form class="form form-horizontal">
         <div class="modal-header">
           <h3>{title()}</h3>
+          <div class="error-message pull-right alert alert-error" visible="{not(configuration.isValid())}">
+            Validation error.
+          </div>
         </div>
-        <div class="modal-body ">
+        <div class="modal-body container-fluid">
           <div class="pull-left menu">
-            <!--<div style="height: 360px;">-->
-              <ul class="nav nav-list" style="padding-bottom:30px;">
-                <li selected="{isStep(0)}" style="color: white;">
-                  <a><i class="icon-chevron-right"/>Start
-                  </a>
-                </li>
-                <li selected="{isStep(1)}"  class="">
-                  <a><i class="icon-chevron-right"/>WAN
-                  </a>
-                </li>
-                <li selected="{isStep(2)}">
-                  <a><i class="icon-chevron-right"/>LAN
-                  </a>
-                </li>
-                <li selected="{isStep(3)}">
-                  <a><i class="icon-chevron-right"/>Time
-                  </a>
-                </li>
-                <li selected="{isStep(4)}">
-                  <a class="muted"><i class="icon-chevron-right"/>Summary
-                  </a>
-                </li>
-              </ul>
-            <!--</div>-->
-            <!--<div class="wizard-progress-container">-->
-
-              <!--<div class="progress progress-striped">-->
-                <!--<div class="bar" style="width: 20%;"></div>-->
-              <!--</div>-->
-            <!--</div>-->
+            <ul class="nav nav-list" style="padding-bottom:30px;height: 570px;">
+              <li selected="{isStep(0)}" enabled="{isAllowedStep(0)}">
+                <a onclick="setCurrentStep(0)"><i class="icon-chevron-right"/>Start</a>
+              </li>
+              <li selected="{isStep(1)}" enabled="{isAllowedStep(1)}">
+                <a onclick="setCurrentStep(1)"><i class="icon-chevron-right"/>WAN</a>
+              </li>
+              <li selected="{isStep(2)}" enabled="{isAllowedStep(2)}">
+                <a onclick="setCurrentStep(2)"><i class="icon-chevron-right"/>LAN</a>
+              </li>
+              <li selected="{isStep(3)}" enabled="{isAllowedStep(3)}">
+                <a onclick="setCurrentStep(3)"><i class="icon-chevron-right"/>Time</a>
+              </li>
+              <li selected="{isStep(4)}" enabled="{isAllowedStep(4)}">
+                <a onclick="setCurrentStep(4)"><i class="icon-chevron-right"/>Summary</a>
+              </li>
+            </ul>
+            <div class="wizard-progress-container" style="margin: 0 10px;">
+              <div class="progress progress-striped">
+                <div class="bar" style="width: {progress()}%;"></div>
+              </div>
+            </div>
           </div>
           <div class="wizard-content">
-            <div class="alert alert-error" visible="{not(configuration.isValid())}">
-              Validation error.
-            </div>
             <ui:SegmentedView cid="segmentedView" visibleIndex="{currentStep}">
               <view:Welcome hostname="{{configuration.hostname}}"/>
               <view:Wan wan="{{configuration.wan}}"/>
               <view:Lan lan="{{configuration.lan}}"/>
               <view:Time time="{{configuration.time}}"/>
-              <!--<view:Summary coniguration="{{configuration}}"/>-->
+              <view:Summary coniguration="{{configuration}}"/>
             </ui:SegmentedView>
           </div>
         </div>
 
         <div class="modal-footer">
+          <ui:Button label="Skip" onclick="skip()" class="pull-left"/>
           <ui:Button label="Previous" enabled="{hasPrevious()}" onclick="previous()"/>
           <ui:Button label="{nextButtonLabel()}" onclick="next()" class="btn btn-primary"/>
         </div>

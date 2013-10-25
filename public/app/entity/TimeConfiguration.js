@@ -3,13 +3,13 @@ define(['js/data/Entity'], function (Entity) {
   return Entity.inherit('app.entity.TimeConfiguration', {
 
     schema: {
-      timeZone: String,
-      ntpServer: String
+//      timeZone: String,
+//      ntpServer: String
     },
 
     defaults: {
-      timeZone: '',
-      ntpServer: ''
+//      timeZone: '',
+//      ntpServer: ''
     }
 
   });

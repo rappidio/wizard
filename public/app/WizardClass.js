@@ -6,6 +6,7 @@ define(["js/core/Application", "app/model/FirewallConfiguration", "js/core/Histo
       configuration: null,
       I18n: null,
       currentStep: 0,
+      highestStep: 0,
       api: null,
       segmentedView: null,
       fade: 'out'
@@ -44,23 +45,38 @@ define(["js/core/Application", "app/model/FirewallConfiguration", "js/core/Histo
     title: function(){
 //      i18n.t('steps.welcome')
       switch(this.get('currentStep')) {
-        case 0:
-          return 'Welcome';
-        case 1:
-          return 'WAN Configuration';
-        case 2:
-          return 'LAN Configuration';
-        case 3:
-          return 'Time Configuration';
-        case 4:
-          return 'Summary';
+        case 0: return 'Welcome';
+        case 1: return 'WAN Configuration';
+        case 2: return 'LAN Configuration';
+        case 3: return 'Time Configuration';
+        case 4: return 'Summary';
       }
       return '';
     }.onChange("currentStep"),
 
+    setCurrentStep: function(step) {
+      if (this.isAllowedStep(step)) {
+        this.set('currentStep', step);
+      }
+    },
+
     isStep: function(step) {
         return step == this.$.currentStep;
     }.onChange("currentStep"),
+
+    progress: function () {
+      switch (this.$.currentStep) {
+        case 0: return 20;
+        case 1: return 40;
+        case 2: return 60;
+        case 3: return 80;
+      }
+      return 100;
+    }.onChange("currentStep"),
+
+    isAllowedStep: function (step) {
+      return step <= this.get('highestStep');
+    }.onChange("highestStep"),
 
     hasNext: function () {
       return (this.$.currentStep < (this.$.segmentedView.$children.length - 1));
@@ -76,14 +92,10 @@ define(["js/core/Application", "app/model/FirewallConfiguration", "js/core/Histo
 
     stepsToValidate: function(stepNumber) {
       switch (stepNumber) {
-        case 0:
-          return "hostname";
-        case 1:
-          return "wan";
-        case 2:
-          return "lan";
-        case 3:
-          return "time";
+        case 0: return "hostname";
+        case 1: return "wan";
+        case 2: return "lan";
+        case 3: return "time";
       }
       return null;
     },
@@ -107,6 +119,7 @@ define(["js/core/Application", "app/model/FirewallConfiguration", "js/core/Histo
         var self = this;
         self.validateCurrentStep(function () {
           self.set('currentStep', self.$.currentStep + 1);
+          self.set('highestStep', self.$.currentStep);
         });
       } else {
         this.save();
@@ -115,6 +128,10 @@ define(["js/core/Application", "app/model/FirewallConfiguration", "js/core/Histo
 
     save: function () {
       this.$.configuration.save();
+    },
+
+    skip: function(){
+
     },
 
     previous: function () {

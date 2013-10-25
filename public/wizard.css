@@ -1,17 +1,18 @@
 #wizard {
-    width: 60%;
-    margin-left: -30%;
+    width: 800px;
+    margin-left: -400px;
 }
 
 #wizard .modal-body {
-    min-height: 600px;
+    min-height: 660px;
     padding: 0;
 }
 
 #wizard .menu {
     width: 140px;
-    height: 600px;
+    height: 660px;
     background-color: #f5f5f5;
+    position: fixed;
 }
 
 #wizard .menu ul li.active {
@@ -23,6 +24,10 @@
     line-height: 40px;
 }
 
+#wizard .menu ul li.active a {
+    color: white;
+}
+
 #wizard .menu ul li a .icon-chevron-right  {
     float: right;
     margin-top: 12px;
@@ -30,7 +35,20 @@
     opacity: .25;
 }
 
+#wizard .menu ul li.active a .icon-chevron-right {
+    opacity: 1;
+}
+
 #wizard .wizard-content {
     margin-left: 140px;
-    padding: 20px;
+    padding: 20px 35px 35px 35px;
+}
+
+#wizard .wizard-content control-group:before{
+    display: block !important;
+}
+
+#wizard .error-message {
+    position: absolute;
+    right: 20px;
 }

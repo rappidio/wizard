@@ -2,6 +2,7 @@
     "xamlClasses": [
         "app/Wizard",
         "app/view/Lan",
+        "app/view/Summary",
         "app/view/Time",
         "app/view/Wan",
         "app/view/Welcome",

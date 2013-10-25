@@ -2,22 +2,22 @@
 <view:LanClass xmlns="http://www.w3.org/1999/xhtml"
                xmlns:ui="js.ui" xmlns:field="js.ui.field" xmlns:view="app.view">
 
-    <field:Text value="{{lan.ipAddress}}" label="{i18n.t('fields.ipAddress')}"/>
-    <field:Text value="{{lan.netmask}}" label="{i18n.t('fields.netmask')}"/>
-    <ui:Field label="{i18n.t('fields.dhcpServer')}">
-        <ui:Checkbox checked="{{lan.enableDhcp}}" label="{i18n.t('fields.enable')}"/>
+    <field:Text value="{{lan.ipAddress}}" label="IP Address"/>
+    <field:Text value="{{lan.netmask}}" label="Netmask"/>
+    <ui:Field label="">
+        <ui:Checkbox checked="{{lan.enableDhcp}}" label="Enable DHCP Server"/>
     </ui:Field>
 
     <div class="dhcp_settings">
         <field:Text enabled="{lan.enableDhcp}" value="{{lan.from}}" label="{i18n.t('fields.from')}"/>
         <field:Text enabled="{lan.enableDhcp}" value="{{lan.to}}" label="{i18n.t('fields.to')}"/>
 
-        <ui:Field label="Dns Server">
-            <ui:Checkbox enabled="{lan.enableDhcp}" checked="{{lan.enableDnsCache}}" label="{i18n.t('fields.enableDnsCache')}"/>
+        <ui:Field label="">
+            <ui:Checkbox enabled="{lan.enableDhcp}" checked="{{lan.enableDnsCache}}" label="Enable built-in DNS cache"/>
         </ui:Field>
 
-        <field:Text enabled="{lan.enableDnsCache}" value="{{lan.dnsServer1}}" label="DNS Server 1"/>
-        <field:Text enabled="{lan.enableDnsCache}" value="{{lan.dnsServer2}}" label="DNS Server 2"/>
+        <field:Text enabled="{lan.enableDhcp}" value="{{lan.dnsServer1}}" label="DNS Server 1"/>
+        <field:Text enabled="{lan.enableDhcp}" value="{{lan.dnsServer2}}" label="DNS Server 2"/>
     </div>
 
 </view:LanClass>
