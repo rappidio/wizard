@@ -7,7 +7,8 @@ define(["js/core/Application", "app/model/FirewallConfiguration", "js/core/Histo
       I18n: null,
       currentStep: 0,
       api: null,
-      segmentedView: null
+      segmentedView: null,
+      fade: 'out'
     },
 
     _initializationComplete: function () {
@@ -25,6 +26,7 @@ define(["js/core/Application", "app/model/FirewallConfiguration", "js/core/Histo
 //                    "fetchSubModels": ["zone",""]
 //                }, function(err, config){
 //                });
+      this.set('fade', 'in');
     },
 
     /***
@@ -38,6 +40,27 @@ define(["js/core/Application", "app/model/FirewallConfiguration", "js/core/Histo
 
       callback();
     },
+
+    title: function(){
+//      i18n.t('steps.welcome')
+      switch(this.get('currentStep')) {
+        case 0:
+          return 'Welcome';
+        case 1:
+          return 'WAN Configuration';
+        case 2:
+          return 'LAN Configuration';
+        case 3:
+          return 'Time Configuration';
+        case 4:
+          return 'Summary';
+      }
+      return '';
+    }.onChange("currentStep"),
+
+    activeWhenStep: function(step) {
+      return 'active';
+    }.onChange("currentStep"),
 
     hasNext: function () {
       return (this.$.currentStep < (this.$.segmentedView.$children.length - 1));
@@ -53,12 +76,14 @@ define(["js/core/Application", "app/model/FirewallConfiguration", "js/core/Histo
 
     stepsToValidate: function(stepNumber) {
       switch (stepNumber) {
+        case 0:
+          return "hostname";
         case 1:
           return "wan";
         case 2:
           return "lan";
-        case 0:
-          return "hostname";
+        case 3:
+          return "time";
       }
       return null;
     },

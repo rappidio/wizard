@@ -14,43 +14,65 @@
     </data:RestDataSource>
   </js:Injection>
 
-  <div cid="wizardModal" class="">
+    <div id="wizard" cid="wizardModal" class="modal fade in" >
 
-    <form class="form span12 form-horizontal">
-      <div class="alert alert-error" visible="{not(configuration.isValid())}">
-        Validation error.
-      </div>
-      <ui:SegmentedView cid="segmentedView" visibleIndex="{currentStep}">
-        <div>
-          <div class="modal-header">
-            <h3>{i18n.t('steps.welcome')}</h3>
-          </div>
-          <view:Welcome class="modal-body" hostname="{{configuration.hostname}}"/>
+      <form class="form">
+        <div class="modal-header">
+          <h3>{title()}</h3>
         </div>
-        <div>
-          <div class="modal-header">
-            <h3>{i18n.t('steps.wan')}</h3>
-          </div>
-          <view:Wan class="modal-body" wan="{{configuration.wan}}"/>
-        </div>
-        <div>
-          <div class="modal-header">
-            <h3>{i18n.t('steps.lan')}</h3>
-          </div>
-          <view:Lan class="modal-body" lan="{{configuration.lan}}"/>
-        </div>
-        <div>
-          <div class="modal-header">
-            <h3>{i18n.t('steps.summary')}</h3>
-          </div>
-        </div>
-      </ui:SegmentedView>
+        <div class="modal-body ">
+          <div class="pull-left menu">
+            <!--<div style="height: 360px;">-->
+              <ul class="nav nav-list" style="padding-bottom:30px;">
+                <li class="active {{activeWhenStep(0)}}" style="color: white;">
+                  <a><i class="icon-chevron-right"/>Start
+                  </a>
+                </li>
+                <li class="">
+                  <a><i class="icon-chevron-right"/>WAN
+                  </a>
+                </li>
+                <li class="">
+                  <a><i class="icon-chevron-right"/>LAN
+                  </a>
+                </li>
+                <li class="">
+                  <a><i class="icon-chevron-right"/>Time
+                  </a>
+                </li>
+                <li class="">
+                  <a class="muted"><i class="icon-chevron-right"/>Summary
+                  </a>
+                </li>
+              </ul>
+            <!--</div>-->
+            <!--<div class="wizard-progress-container">-->
 
-      <div class="modal-footer">
-        <ui:Button label="Previous" enabled="{hasPrevious()}" onclick="previous()"/>
-        <ui:Button label="{nextButtonLabel()}" onclick="next()" class="btn btn-primary"/>
-      </div>
-    </form>
+              <!--<div class="progress progress-striped">-->
+                <!--<div class="bar" style="width: 20%;"></div>-->
+              <!--</div>-->
+            <!--</div>-->
+          </div>
+          <div class="wizard-content">
+            <div class="alert alert-error" visible="{not(configuration.isValid())}">
+              Validation error.
+            </div>
+            <ui:SegmentedView cid="segmentedView" visibleIndex="{currentStep}">
+              <view:Welcome hostname="{{configuration.hostname}}"/>
+              <view:Wan wan="{{configuration.wan}}"/>
+              <view:Lan lan="{{configuration.lan}}"/>
+              <view:Time time="{{configuration.time}}"/>
+              <!--<view:Summary coniguration="{{configuration}}"/>-->
+            </ui:SegmentedView>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <ui:Button label="Previous" enabled="{hasPrevious()}" onclick="previous()"/>
+          <ui:Button label="{nextButtonLabel()}" onclick="next()" class="btn btn-primary"/>
+        </div>
+      </form>
+
   </div>
-
+  <div class="modal-backdrop fade in" />
 </app:WizardClass>

@@ -1,0 +1,36 @@
+#wizard {
+    width: 60%;
+    margin-left: -30%;
+}
+
+#wizard .modal-body {
+    min-height: 600px;
+    padding: 0;
+}
+
+#wizard .menu {
+    width: 140px;
+    height: 600px;
+    background-color: #f5f5f5;
+}
+
+#wizard .menu ul li.active {
+    background-color: #08C;
+}
+
+#wizard .menu ul li a {
+    padding: 3px 15px 3px 20px;
+    line-height: 40px;
+}
+
+#wizard .menu ul li a .icon-chevron-right  {
+    float: right;
+    margin-top: 12px;
+    margin-right: -6px;
+    opacity: .25;
+}
+
+#wizard .wizard-content {
+    margin-left: 140px;
+    padding: 20px;
+}

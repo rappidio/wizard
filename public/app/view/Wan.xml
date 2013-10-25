@@ -1,8 +1,10 @@
 <?xml version="1.0"?>
 <view:WanClass xmlns="http://www.w3.org/1999/xhtml"
                xmlns:js="js.core" xmlns:ui="js.ui" xmlns:app="app" xmlns:field="js.ui.field" xmlns:view="app.view">
-  <div class="row">
-    <div class="span6">
+
+
+  <!--<div class="row">-->
+    <!--<div class="span6">-->
       <ui:Field label="Mode">
         <select items="{modes}"
                 selectedItem="{{wan.mode}}"
@@ -20,9 +22,9 @@
         </ui:RadioGroup>
         <input value="{{wan.macAddress}}" enabled="{wan.overrideMacAddress}"/>
       </ui:Field>
-    </div>
+    <!--</div>-->
 
-    <div class="span6">
+    <!--<div class="span6">-->
       <div class="static" visible="{is('static')}">
         <field:Text value="{{wan.staticIpAddress}}" label="{i18n.t('fields.ipAddress')}"/>
         <field:Text value="{{wan.staticNetmask}}" label="{i18n.t('fields.netmask')}"/>
@@ -32,18 +34,18 @@
         <field:Text value="{{wan.pppoeUsername}}" label="{i18n.t('fields.pppoeUsername')}"/>
         <field:Password value="{{wan.pppoePassword}}" label="{i18n.t('fields.pppoePassword')}"/>
       </div>
-    </div>
-  </div>
+    <!--</div>-->
+  <!--</div>-->
 
-  <div class="row">
-    <div class="span6">
+  <!--<div class="row">-->
+    <!--<div class="span6">-->
       <ui:Field label="DNS Server">
         <ui:Checkbox enabled="{not(is('static'))}" checked="{{wan.useDhcpDns}}" label="get from DHCP"/>
       </ui:Field>
       <field:Text enabled="{not(wan.useDhcpDns)}" value="{{wan.dnsServer1}}" label="DNS Server 1"/>
       <field:Text enabled="{not(wan.useDhcpDns)}" value="{{wan.dnsServer2}}" label="DNS Server 2"/>
       <field:Text enabled="{not(wan.useDhcpDns)}" value="{{wan.dnsServer3}}" label="DNS Server 3"/>
-    </div>
-  </div>
+    <!--</div>-->
+  <!--</div>-->
 
 </view:WanClass>
