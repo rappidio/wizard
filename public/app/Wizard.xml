@@ -24,23 +24,23 @@
           <div class="pull-left menu">
             <!--<div style="height: 360px;">-->
               <ul class="nav nav-list" style="padding-bottom:30px;">
-                <li class="active {{activeWhenStep(0)}}" style="color: white;">
+                <li selected="{isStep(0)}" style="color: white;">
                   <a><i class="icon-chevron-right"/>Start
                   </a>
                 </li>
-                <li class="">
+                <li selected="{isStep(1)}"  class="">
                   <a><i class="icon-chevron-right"/>WAN
                   </a>
                 </li>
-                <li class="">
+                <li selected="{isStep(2)}">
                   <a><i class="icon-chevron-right"/>LAN
                   </a>
                 </li>
-                <li class="">
+                <li selected="{isStep(3)}">
                   <a><i class="icon-chevron-right"/>Time
                   </a>
                 </li>
-                <li class="">
+                <li selected="{isStep(4)}">
                   <a class="muted"><i class="icon-chevron-right"/>Summary
                   </a>
                 </li>

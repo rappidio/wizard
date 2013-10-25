@@ -58,8 +58,8 @@ define(["js/core/Application", "app/model/FirewallConfiguration", "js/core/Histo
       return '';
     }.onChange("currentStep"),
 
-    activeWhenStep: function(step) {
-      return 'active';
+    isStep: function(step) {
+        return step == this.$.currentStep;
     }.onChange("currentStep"),
 
     hasNext: function () {
