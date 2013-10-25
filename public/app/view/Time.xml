@@ -1,7 +1,16 @@
 <?xml version="1.0"?>
-<view:LanClass xmlns="http://www.w3.org/1999/xhtml"
-               xmlns:ui="js.ui" xmlns:field="js.ui.field" xmlns:view="app.view">
+<view:TimeClass xmlns="http://www.w3.org/1999/xhtml"
+               xmlns:js="js.core" xmlns:ui="js.ui" xmlns:field="js.ui.field" xmlns:view="app.view">
 
+  <ui:Field label="Time Zone">
+    <select class="input-xlarge"
+            items="{timeZones}"
+            selectedItem="{{time.timeZone}}"
+            itemKey="timeZone">
+      <js:Template name="item">
+        <option value="{timeZone}">{timeZone}</option>
+      </js:Template>
+    </select>
+  </ui:Field>
 
-
-</view:LanClass>
+</view:TimeClass>
