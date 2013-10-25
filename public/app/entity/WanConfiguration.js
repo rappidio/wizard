@@ -1,4 +1,5 @@
-define(['js/data/Entity', 'app/validator/IpAddressValidator'], function (Entity, IpAddressValidator) {
+define(['js/data/Entity', 'app/validator/IpAddressValidator', 'app/validator/NetmaskAddressValidator'],
+    function (Entity, IpAddressValidator, NetmaskAddressValidator) {
 
   var whenStatic = function () {
     return this.$.mode === 'static';
@@ -17,6 +18,7 @@ define(['js/data/Entity', 'app/validator/IpAddressValidator'], function (Entity,
   return Entity.inherit('app.entity.WanConfiguration', {
 
     schema: {
+      name: String,
       enableNat: Boolean,
       mode: String,
       staticIpAddress: {
@@ -54,6 +56,7 @@ define(['js/data/Entity', 'app/validator/IpAddressValidator'], function (Entity,
       dnsServer3: {required: false, type: String}
     },
     defaults: {
+      name: 'WAN',
       enableNat: true,
       mode: 'dhcp',
       overrideMacAddress: false,
@@ -65,7 +68,7 @@ define(['js/data/Entity', 'app/validator/IpAddressValidator'], function (Entity,
       new IpAddressValidator({field: "dnsServer2"}),
       new IpAddressValidator({field: "dnsServer3"}),
       new IpAddressValidator({field: "staticIpAddress"}),
-      new IpAddressValidator({field: "staticNetmask"}),
+      new NetmaskAddressValidator({field: "staticNetmask"}),
       new IpAddressValidator({field: "staticGateway"})
     ],
 
@@ -73,12 +76,12 @@ define(['js/data/Entity', 'app/validator/IpAddressValidator'], function (Entity,
       if (newMode !== 'pppoe') {
         this.set('pppoeUsername', '');
         this.set('pppoePassword', '');
-      } else if (newMode !== 'static') {
+      }
+      if (newMode !== 'static') {
         this.set('staticIpAddress', '');
         this.set('staticNetmask', '');
         this.set('staticGateway', '');
-      }
-      if (newMode === 'static') {
+      } else {
         this.set('useDhcpDns', false);
       }
     }

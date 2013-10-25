@@ -2,6 +2,7 @@
 <view:LanClass xmlns="http://www.w3.org/1999/xhtml"
                xmlns:ui="js.ui" xmlns:field="js.ui.field" xmlns:view="app.view">
 
+  <field:Text value="{{lan.name}}" label="Name"/>
     <field:Text value="{{lan.ipAddress}}" label="IP Address"/>
     <field:Text value="{{lan.netmask}}" label="Netmask"/>
     <ui:Field label="">
@@ -12,7 +13,7 @@
         <field:Text enabled="{lan.enableDhcp}" value="{{lan.from}}" label="{i18n.t('fields.from')}"/>
         <field:Text enabled="{lan.enableDhcp}" value="{{lan.to}}" label="{i18n.t('fields.to')}"/>
 
-        <ui:Field label="">
+        <ui:Field label="" enabled="{lan.enableDhcp}">
             <ui:Checkbox enabled="{lan.enableDhcp}" checked="{{lan.enableDnsCache}}" label="Enable built-in DNS cache"/>
         </ui:Field>
 

@@ -2,50 +2,42 @@
 <view:WanClass xmlns="http://www.w3.org/1999/xhtml"
                xmlns:js="js.core" xmlns:ui="js.ui" xmlns:app="app" xmlns:field="js.ui.field" xmlns:view="app.view">
 
-  <!--<div class="container-fluid">-->
-  <!--<div class="row-fluid">-->
-    <!--<div class="span4">-->
-      <ui:Field label="Mode">
-        <select items="{modes}"
-                selectedItem="{{wan.mode}}"
-                itemKey="mode">
-          <js:Template name="item">
-            <option value="{mode}">{i18n.ts('wanModes', mode)}</option>
-          </js:Template>
-        </select>
-      </ui:Field>
-  <!--<div class="static" visible="{is('static')}">-->
-    <field:Text enabled="{is('static')}" value="{{wan.staticIpAddress}}" label="{i18n.t('fields.ipAddress')}"/>
-    <field:Text enabled="{is('static')}" value="{{wan.staticNetmask}}" label="{i18n.t('fields.netmask')}"/>
-    <field:Text enabled="{is('static')}" value="{{wan.staticGateway}}" label="{i18n.t('fields.gateway')}"/>
-  <!--</div>-->
-  <!--<div class="pppoe" visible="{is('pppoe')}">-->
-    <field:Text enabled="{is('pppoe')}" value="{{wan.pppoeUsername}}" label="{i18n.t('fields.pppoeUsername')}"/>
-    <field:Password enabled="{is('pppoe')}" value="{{wan.pppoePassword}}" label="{i18n.t('fields.pppoePassword')}"/>
-  <!--</div>-->
+  <field:Text value="{{wan.name}}" label="Name"/>
 
-      <ui:Field label="MAC Address" value="{wan.macAddress}">
-        <ui:RadioGroup value="{{wan.overrideMacAddress}}">
-          <ui:Radio label="{i18n.t('fields.useDefault')}" value="false"/>
-          <ui:Radio label="{i18n.t('fields.overwrite')}" value="true"/>
-        </ui:RadioGroup>
-        <input value="{{wan.macAddress}}" enabled="{wan.overrideMacAddress}"/>
-      </ui:Field>
-    <!--</div>-->
+  <ui:Field label="Mode">
+    <select items="{modes}"
+            selectedItem="{{wan.mode}}"
+            itemKey="mode">
+      <js:Template name="item">
+        <option value="{mode}">{i18n.ts('wanModes', mode)}</option>
+      </js:Template>
+    </select>
+  </ui:Field>
+  <div class="wan-placeholder">
+    <div visible="{is('static')}">
+      <field:Text value="{{wan.staticIpAddress}}" label="IP Address"/>
+      <field:Text value="{{wan.staticNetmask}}" label="Netmask"/>
+      <field:Text value="{{wan.staticGateway}}" label="Gateway"/>
+    </div>
+    <div class="pppoe" visible="{is('pppoe')}">
+      <field:Text value="{{wan.pppoeUsername}}" label="Username"/>
+      <field:Password value="{{wan.pppoePassword}}" label="Password"/>
+    </div>
+  </div>
 
-    <!--<div class="span4">-->
-    <!--</div>-->
-  <!--</div>-->
+  <ui:Field label="MAC Address" value="{wan.macAddress}">
+    <ui:RadioGroup value="{{wan.overrideMacAddress}}">
+      <ui:Radio label="Use Default" value="false"/>
+      <ui:Radio label="Override" value="true"/>
+    </ui:RadioGroup>
+    <input value="{{wan.macAddress}}" enabled="{wan.overrideMacAddress}"/>
+  </ui:Field>
 
-  <!--<div class="row-fluid">-->
-    <!--<div class="span4">-->
-      <ui:Field label="DNS Server">
-        <ui:Checkbox enabled="{not(is('static'))}" checked="{{wan.useDhcpDns}}" label="get from DHCP"/>
-      </ui:Field>
-      <field:Text enabled="{not(wan.useDhcpDns)}" value="{{wan.dnsServer1}}" label="DNS Server 1"/>
-      <field:Text enabled="{not(wan.useDhcpDns)}" value="{{wan.dnsServer2}}" label="DNS Server 2"/>
-      <field:Text enabled="{not(wan.useDhcpDns)}" value="{{wan.dnsServer3}}" label="DNS Server 3"/>
-    <!--</div>-->
-  <!--</div>-->
-  <!--</div>-->
+  <ui:Field label="DNS Server">
+    <ui:Checkbox enabled="{not(is('static'))}" checked="{{wan.useDhcpDns}}" label="get from DHCP"/>
+  </ui:Field>
+  <field:Text enabled="{not(wan.useDhcpDns)}" value="{{wan.dnsServer1}}" label="DNS Server 1"/>
+  <field:Text enabled="{not(wan.useDhcpDns)}" value="{{wan.dnsServer2}}" label="DNS Server 2"/>
+  <field:Text enabled="{not(wan.useDhcpDns)}" value="{{wan.dnsServer3}}" label="DNS Server 3"/>
+
 </view:WanClass>

@@ -49,7 +49,9 @@
   },
 
   "error": {
-    "isNotIPAddressError": "%0 is no IP address"
+    "isUndefinedError": "is required",
+    "isNotIPAddressError": "is not a valid IP Address",
+    "isNotNetmaskAddressError": "is not a valid Netmask"
   }
 
 }

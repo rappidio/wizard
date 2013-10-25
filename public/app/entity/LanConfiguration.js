@@ -1,4 +1,5 @@
-define(['js/data/Entity'], function (Entity) {
+define(['js/data/Entity', 'app/validator/IpAddressValidator', 'app/validator/NetmaskAddressValidator'],
+    function (Entity, IpAddressValidator, NetmaskAddressValidator) {
 
   var whenDhcpEnabled = function () {
     return this.$.enableDhcp;
@@ -7,6 +8,7 @@ define(['js/data/Entity'], function (Entity) {
   return Entity.inherit('app.entity.LanConfiguration', {
 
     schema: {
+      name: String,
       ipAddress: String,
       netmask: String,
       enableDhcp: Boolean,
@@ -18,9 +20,18 @@ define(['js/data/Entity'], function (Entity) {
     },
 
     defaults: {
+      name: 'LAN',
       enableDhcp: false,
       enableDnsCache: false
     },
+    validators: [
+      new IpAddressValidator({field: "ipAddress"}),
+      new NetmaskAddressValidator({field: "netmask"}),
+      new IpAddressValidator({field: "from"}),
+      new IpAddressValidator({field: "to"}),
+      new IpAddressValidator({field: "dnsServer1"}),
+      new IpAddressValidator({field: "dnsServer2"})
+    ],
 
     _commitEnableDhcp: function (newDhcp) {
       if (newDhcp === false) {

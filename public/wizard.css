@@ -4,13 +4,13 @@
 }
 
 #wizard .modal-body {
-    min-height: 660px;
+    min-height: 630px;
     padding: 0;
 }
 
 #wizard .menu {
     width: 140px;
-    height: 660px;
+    height: 630px;
     background-color: #f5f5f5;
     position: fixed;
 }
@@ -44,11 +44,30 @@
     padding: 20px 35px 35px 35px;
 }
 
-#wizard .wizard-content control-group:before{
-    display: block !important;
-}
+/*#wizard .wizard-content control-group:before{*/
+    /*display: block !important;*/
+/*}*/
 
 #wizard .error-message {
     position: absolute;
+    top: 7px;
     right: 20px;
+}
+
+#wizard .wizard-content .control-group.error .error {
+    color: #B94A48;
+    float: left;
+    width: 400px;
+    text-align: right;
+    font-style: italic;
+    font-size: 0.8rem;
+    position: fixed;
+}
+
+#wizard .wizard-content .control-group.disabled label {
+    color: rgba(0, 0, 0, 0.3);
+}
+
+#wizard .wizard-content .wan-placeholder {
+    height: 175px;
 }
