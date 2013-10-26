@@ -4,25 +4,70 @@
 
   <table class="table table-condensed">
     <tr>
-      <th>Hostname</th>
-      <td colspan="2">{configuration.hostname.hostname}</td>
+      <th colspan="2">Hostname</th>
+      <td>{configuration.hostname.hostname}</td>
     </tr>
     <tr>
-      <th rowspan="4">WAN</th>
+      <th rowspan="5">WAN</th>
       <th>Name</th>
       <td>{configuration.wan.name}</td>
     </tr>
     <tr>
       <th>NAT</th>
-      <td>{labelNat()}</td>
+      <td>
+        <span visible="{configuration.wan.enableNat}">yes</span>
+        <span visible="{not(configuration.wan.enableNat)}">no</span>
+      </td>
     </tr>
     <tr>
       <th>Mode</th>
       <td>{i18n.ts('wanModes', configuration.wan.mode)}</td>
     </tr>
     <tr>
+      <th>MAC Address</th>
+      <td>
+        <span visible="{not(configuration.wan.overrideMacAddress)}">Use default</span>
+        <span visible="{configuration.wan.overrideMacAddress}">{configuration.wan.macAddress}</span>
+      </td>
+    </tr>
+    <tr>
       <th>DNS</th>
-      <td>{labelDnsServer()}</td>
+      <td>
+        <span visible="{configuration.wan.useDhcpDns}">over DHCP</span>
+        <span visible="{not(configuration.wan.useDhcpDns)}">
+          {configuration.wan.dnsServer1}
+          <span visible="{configuration.wan.dnsServer2}">, {configuration.wan.dnsServer2}</span>
+          <span visible="{configuration.wan.dnsServer3}">, {configuration.wan.dnsServer3}</span>
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <th rowspan="5">LAN</th>
+      <th>Name</th>
+      <td>{configuration.lan.name}</td>
+    </tr>
+    <tr>
+      <th>IP Address</th>
+      <td>{configuration.lan.ipAddress}</td>
+    </tr>
+    <tr>
+      <th>Netmask</th>
+      <td>{configuration.lan.netmask}</td>
+    </tr>
+    <tr>
+      <th>DHCP</th>
+      <td>
+        <span visible="{configuration.lan.enableDhcp}">{configuration.lan.from} - {configuration.lan.to}</span>
+        <span visible="{not(configuration.lan.enableDhcp)}">off</span>
+      </td>
+    </tr>
+    <tr>
+      <th>DNS</th>
+      <td>{configuration.lan.dnsServer1}<span visible="{configuration.lan.dnsServer2}">, {configuration.lan.dnsServer2}</span></td>
+    </tr>
+    <tr>
+      <th colspan="2">Time Zone</th>
+      <td>{configuration.time.timeZone}</td>
     </tr>
   </table>
 

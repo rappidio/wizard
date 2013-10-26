@@ -9,7 +9,8 @@ define(["js/core/Application", "app/model/FirewallConfiguration", "js/core/Histo
       highestStep: 0,
       api: null,
       segmentedView: null,
-      fade: 'out'
+      fade: 'out',
+      productName: 'NetworkProtector'
     },
 
     _initializationComplete: function () {
@@ -53,12 +54,6 @@ define(["js/core/Application", "app/model/FirewallConfiguration", "js/core/Histo
       }
       return '';
     }.onChange("currentStep"),
-
-    setCurrentStep: function(step) {
-      if (this.isAllowedStep(step)) {
-        this.set('currentStep', step);
-      }
-    },
 
     isStep: function(step) {
         return step == this.$.currentStep;
@@ -119,10 +114,16 @@ define(["js/core/Application", "app/model/FirewallConfiguration", "js/core/Histo
         var self = this;
         self.validateCurrentStep(function () {
           self.set('currentStep', self.$.currentStep + 1);
-          self.set('highestStep', self.$.currentStep);
+          self.set('highestStep', Math.max(self.$.currentStep, self.$.highestStep));
         });
       } else {
         this.save();
+      }
+    },
+
+    setCurrentStep: function (step) {
+      if (this.isAllowedStep(step)) {
+        this.set('currentStep', step);
       }
     },
 
